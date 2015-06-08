@@ -1,0 +1,11 @@
+
+<body ng-app="starter" ng-controller="ListController">
+<ion-view view-title="Task List">
+	<ion-content class="padding">
+		<ion-list>
+			<ion-item ng-repeat="task in tasks">
+			{{task.name}}
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

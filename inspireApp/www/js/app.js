@@ -5,7 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'firebase', 'starter.controllers'])
+
+
+// factory('Tasks' ['$firebaseArray'], function($firebaseArray) {
+//   var tasksRef= new Firebase('https://appinspire.firebaseio.com/');
+//   return $firebaseArray(tasksRef);
+
+// }])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -29,6 +36,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
+
   // setup an abstract state for the tabs directive
   .state('tab', {
     url: "/tab",
@@ -36,8 +44,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: "templates/tabs.html"
   })
 
-  // Each tab has its own nav history stack:
+  // Each tab has its own nav history stack:  
 
+  .state('splashpage', {
+    url: '/splashpage',
+    templateUrl: 'templates/splashPage.html'
+
+  })
+
+  .state('dashboard', {
+    url: '/dashboard',
+    templateUrl: 'templates/dashboard.html',
+    controller: 'MainCtrl'
+  })
+ 
   .state('tab.add', {
     url: '/add',
     views: {
@@ -68,7 +88,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    controller: 'SignupCtrl'
+  })
+ 
+
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/add');
+  $urlRouterProvider.otherwise('/splashpage');
 
 });

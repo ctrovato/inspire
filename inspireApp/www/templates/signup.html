@@ -1,0 +1,48 @@
+<ion-view view-title="Sign Up">
+  <ion-content class="padding">
+
+<div class="loginForm"> 
+	<form name ="myForm"
+	ng-submit="register()"
+	novalidate> 
+	  	<!-- Enter Name --> 
+		<label class="item item-input">
+			<i class="icon ion-person placeholder-icon"></i>
+			<input ng-model="user.name" type="text" placeholder="Enter Your Firstname">
+		</label>
+			<!-- Below is an error validation message using ng-show -->
+	<!-- 		<p class="errorValidation" 
+			ng-show="myForm.firstname.$invalid && myForm.firstname.$touched"> 
+			Must enter a first name.</p>
+			<br/> -->
+
+
+	  	<!-- Enter Email --> 
+		<label class="item item-input">
+			<i class="icon ion-at placeholder-icon"></i>
+			<input ng-model="user.email" type="text" placeholder="Enter Email Address">
+		</label>
+			<!-- Below is an error validation message using ng-show -->
+	<!-- 		<p class="errorValidation" 
+			ng-show="myForm.email.$invalid && myForm.email.$touched"> 
+			Must enter a valid Email address</p> -->
+
+		<!-- Enter Password --> 
+		<label class="item item-input">
+			<i class="icon ion-locked placeholder-icon"></i>
+			<input ng-model="user.password" type="password" placeholder="Enter Password">
+		</label>
+			<!-- Below is an error validation message using ng-show -->
+	<!-- 		<p class="errorValidation" 
+			ng-show="myForm.password.$invalid && myForm.password.$touched"> 
+			Must enter a password.</p> -->
+
+			<button class="button button-block  button-energized" >Sign Up</button>
+
+	</form>
+
+	<p>Or</p>
+<button class="icon ion-social-facebook button button-block  button-positive"> Login with Facebook</button>
+</div><!-- Login Form -->
+  </ion-content>
+</ion-view>

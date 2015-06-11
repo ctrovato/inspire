@@ -2,9 +2,25 @@
 p {
 	font-size: 1.5em;
 	text-align: center;
-	padding: 10px 0px 10px 0px;
+	color: #fff;
+	padding: 3px 0px 3px 0px;
+	font-family: 'Droid Sans', sans-serif;
+}
+ h3{
+ 	color: #fff;
+ 	text-align: center;
+ 	font-family: 'Droid Sans', sans-serif;
+ }
+.bkground{
+	background: url(../img/greyWall.png) center center fixed;
 }
 
 .loginForm{
-	padding-top: 100px;
+	padding-top: 50px;
+}
+
+.button{
+	font-weight: 700;
+	font-size: 1.4em;
+	font-family: 'Droid Sans', sans-serif;
 }

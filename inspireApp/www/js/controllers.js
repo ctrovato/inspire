@@ -1,8 +1,8 @@
 angular.module('starter.controllers', ['firebase'])
 
 
-// ============ Main  Controller ===========
-// =========================================
+// ================= Main  Controller =============
+// ================================================
 
 .controller('MainCtrl', function($scope, $ionicSideMenuDelegate) {
 	$scope.toggleLeft = function(){
@@ -10,9 +10,8 @@ angular.module('starter.controllers', ['firebase'])
 	}
 })
 
-
-// ============ Sign Up Controller ===========
-// ===========================================
+// ============ Sign Up | Login Controller ===========
+// ===================================================
 
 .controller('SignupCtrl', function($scope, $location, $firebaseObject, $firebaseAuth) {
 
@@ -30,36 +29,8 @@ var url = 'https://appinspire.firebaseio.com/'
 
 	$scope.register = function(){
 
-	// 	$scope.authObj.$createUser({
-	// 		email: $scope.user.email,
-	// 		password: $scope.user.password
-	// 	})
-	// 	.then(function(){
+		console.log('password', $scope.user.password, 'email', $scope.user.email);
 
-	// 	console.log('something');
-	// 		return $scope.authObj.$authWithPassword({
-	// 			email: $scope.user.email,
-	// 			password: $scope.user.password
-	// 		}); 
-	// 	})
-	// 	.catch(function(error){	
-	// 	console.log(error);			
-	// 	})
-	// 	.then(function(authData){
-	// 		$rootScope.authData = authData;
-	// 		console.log("data", authData);   //logging authData
-
-	// 		$scope.sync
-	// 		.$set(authData.uid, {
-	// 			uid: authData.uid,
-	// 			firstname: $scope.user.firstname,
-	// 			email: $scope.user.email
-	// 		});
-
-	// 		$rootScope.currentUser = authData
-	// 		$location.path('/dashboard');
-	// 	})
-console.log('password', $scope.user.password, 'email', $scope.user.email);
 		$scope.authObj.$createUser({
 		  email: $scope.user.email,
 		  password: $scope.user.password
@@ -91,9 +62,29 @@ console.log('password', $scope.user.password, 'email', $scope.user.email);
 			$scope.currentUser = authData
 			$location.path('/dashboard');
 		})
+	}
 
+	$scope.login = function(){
 
- }
+		$scope.authObj.$authWithPassword({
+			email: $scope.user.email,
+			password: $scope.user.password})
+			//authentication for firebase if currentUser = authData will send to PostFeed
+			//catch if $scope.authError=error.message; will send to Login
+			.then(function(authData) {
+				$scope.currentUser = authData
+				$location.path('/dashboard');
+			}).catch(function(error) {
+				console.log(error);  //logging authData
+				$scope.authError=error.message;
+				$location.path('/login');
+			});
+	}
+
+	$scope.go = function (path) {
+  		
+  		$location.path( "/signup" );
+}
 
 
 

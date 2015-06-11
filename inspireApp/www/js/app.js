@@ -52,6 +52,13 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers'])
 
   })
 
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+
+  })
+ 
+
   .state('dashboard', {
     url: '/dashboard',
     templateUrl: 'templates/dashboard.html',

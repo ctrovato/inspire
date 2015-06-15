@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'firebase', 'starter.controllers'])
+angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-datepicker', 'ionic-timepicker'])
 
 
 // factory('Tasks' ['$firebaseArray'], function($firebaseArray) {
@@ -100,10 +100,11 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers'])
     templateUrl: 'templates/signup.html',
     controller: 'SignupCtrl'
   })
- 
 
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/splashpage');
 
-});
+})
+
+

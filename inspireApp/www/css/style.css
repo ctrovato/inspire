@@ -2,7 +2,7 @@
 p {
 	font-size: 1.5em;
 	text-align: center;
-	color: #fff;
+	color: #121212;
 	padding: 3px 0px 3px 0px;
 	font-family: 'Droid Sans', sans-serif;
 }
@@ -12,7 +12,10 @@ p {
  	font-family: 'Droid Sans', sans-serif;
  }
 .bkground{
-	background: url(../img/greyWall.png) center center fixed;
+	background: #565656
+}
+.bkground2{
+	background: url("../img/inspireBackground.jpg");
 }
 
 .loginForm{
@@ -20,7 +23,16 @@ p {
 }
 
 .button{
+	color: #545454;
 	font-weight: 700;
 	font-size: 1.4em;
 	font-family: 'Droid Sans', sans-serif;
 }
+.addTask{
+	font-size: 1.4em;
+	text-align: center;
+	color:#FFF;
+	padding: 3px 0px 3px 0px;
+	font-family: 'Droid Sans', sans-serif;
+}
+

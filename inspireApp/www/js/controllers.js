@@ -3,27 +3,26 @@ angular.module('starter.controllers', ['firebase'])
 
 // ================= Main  Controller =============
 // ================================================
-
 .controller('MainCtrl', function($scope, $ionicSideMenuDelegate) {
 	$scope.toggleLeft = function(){
 		$ionicSideMenuDelegate.toggleLeft()
 	}
 })
 
+
 // ============ Sign Up | Login Controller ===========
 // ===================================================
-
 .controller('SignupCtrl', function($scope, $location, $firebaseObject, $firebaseAuth) {
 
 var url = 'https://appinspire.firebaseio.com/' 
 		var ref = new Firebase(url); 
-		var posts = $firebaseObject(ref);
+		var tasks = $firebaseObject(ref);
 
 		$scope.authObj = $firebaseAuth(ref);
 
 		var userRef =  new Firebase(url + "users/");
 
-		$scope.newUser = posts;
+		$scope.newUser = tasks;
 
 		$scope.user={};
 
@@ -69,7 +68,7 @@ var url = 'https://appinspire.firebaseio.com/'
 		$scope.authObj.$authWithPassword({
 			email: $scope.user.email,
 			password: $scope.user.password})
-			//authentication for firebase if currentUser = authData will send to PostFeed
+			//authentication for firebase if currentUser = authData will send to users Dashboard
 			//catch if $scope.authError=error.message; will send to Login
 			.then(function(authData) {
 				$scope.currentUser = authData
@@ -86,17 +85,73 @@ var url = 'https://appinspire.firebaseio.com/'
   		$location.path( "/signup" );
 }
 
-
-
 })
+
 
 
 // ============ User Controller ===========
 // =========================================
-
 .controller('UsersCtrl', function($scope) {})
 
-.controller('AddCtrl', function($scope) {})
+
+
+// ============ Add Tasks Controller ===========
+// =============================================
+.controller('AddCtrl', function($scope, $ionicPopup) {
+
+	$scope.currentDate = new Date();
+
+	$scope.slots = [
+      {epochTime: 12600, step: 15, format: 12},
+      {epochTime: 54900, step: 1, format: 24}
+ 	];
+
+ 	
+	// var url = 'https://appinspire.firebaseio.com/';
+	// 	var ref = new Firebase(url);
+	// 	var ref_tasks = new Firebase(url+"tasks/");  
+	// 	var tasks = $firebase(ref_tasks);
+	// 	$scope.tasks = tasks.$asArray();
+
+	// 	$scope.authObj = $firebaseAuth(ref);
+
+	// 	$scope.authObj.$onAuth(function(authData) {
+	// 		if (authData) {
+	// 			var userRef =  new Firebase( url + "users/" + authData.uid);
+	// 			$scope.sync = $firebase(userRef);
+	// 			$rootScope.currentUser = $scope.sync.$asObject();
+				
+	// 			console.log("logged in tasks ", $rootScope.currentUser); //logging $rootScope.currentUsers
+
+	// 		} else {
+	// 			$location.path("/login");
+	// 		}
+	// 	});
+
+	// 	console.log($rootScope.currentUser);  //logging $rootScope.currentUsers
+
+	// $scope.addTask = function(){
+
+	// 	console.log($scope.tasks); //logging $scope.tasks
+	// 	$scope.tasks.$add({
+	// 		name: $rootScope.currentUser.name,
+	// 		uid: $rootScope.currentUser.uid,
+	// 		title: $scope.title,
+	// 		date: Firebase.ServerValue.TIMESTAMP
+
+	// 	}).then(function(){
+	// 		$scope.title = '';
+	// 		$scope.description = '';
+	// 		$scope.content = '';
+	// 		$scope.postForm.$setUntouched();
+	// 	})
+
+	// } //addPost
+
+	// Time picker formatting
+
+
+})
 
 .controller('ListCtrl', function($scope, $ionicListDelegate) {})
 

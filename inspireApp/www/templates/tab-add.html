@@ -1,14 +1,31 @@
 <ion-view view-title="Add Task">
-	<ion-content class="padding">
+	<ion-content class="bkground2 padding">
 
-<div class="list list-inset"></div>
-	<!-- Adding Tasks --> 
+<div class="list list-inset">
+<!-- Adding Tasks --> 
 	<label class="item item-input">
 		<i class="icon ion-plus-round placeholder-icon"></i>
 		<input type="text" placeholder="Add a Task">
 	</label>
 </div>
+</br>
+<!-- Setting the Deadline with the Datepicker -->
+	<p class="addTask">{{currentDate | date:'dd - MMMM - yyyy'}}</p>
+	<ionic-datepicker idate="currentDate" disablepreviousdates="true">
+	  <button class="button button-block button-energized">Set a Date</button>
+	</ionic-datepicker>
 
-<button class="button button-block  button-energized">Start Task</button>    
+</br>
+<!-- Setting the Deadline with the Timepicker -->
+	<p class="addTask">{{slots[0].epochTime}}</p>
+	<ionic-timepicker etime="slots[0].epochTime" format="12" step="15">    
+	  <button class="button button-block button-energized">Set a Time</button>        
+	</ionic-timepicker>
+
+</br>
+
+
+
+<button class="button button-block  button-balanced">Start Task</button>    
 	</ion-content>
 </ion-view>

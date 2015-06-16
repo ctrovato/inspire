@@ -1,31 +1,35 @@
 <ion-view view-title="Add Task">
 	<ion-content class="bkground2 padding">
 
-<div class="list list-inset">
+
+<div class="loginForm"> 
+	<form name ="myForm"
+	ng-submit="addTask(task)"
+	novalidate> 
+
 <!-- Adding Tasks --> 
 	<label class="item item-input">
 		<i class="icon ion-plus-round placeholder-icon"></i>
-		<input type="text" placeholder="Add a Task">
+		<input type="text" ng-model="task.title" placeholder="Add a Task">
 	</label>
-</div>
 </br>
 <!-- Setting the Deadline with the Datepicker -->
-	<p class="addTask">{{currentDate | date:'dd - MMMM - yyyy'}}</p>
-	<ionic-datepicker idate="currentDate" disablepreviousdates="true">
-	  <button class="button button-block button-energized">Set a Date</button>
-	</ionic-datepicker>
-
+<ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">
+    <button class="button button-block button-positive">{{ currentDate | date:'dd - MMMM - yyyy' }}</button>
+</ionic-datepicker>
 </br>
 <!-- Setting the Deadline with the Timepicker -->
-	<p class="addTask">{{slots[0].epochTime}}</p>
-	<ionic-timepicker etime="slots[0].epochTime" format="12" step="15">    
-	  <button class="button button-block button-energized">Set a Time</button>        
+	<ionic-timepicker etime="slots.epochTime" format="slots.format" step="slots.step" callback="timePickerCallback">    
+		<button class="button button-block button-energized"> Set a Time </button>
 	</ionic-timepicker>
-
 </br>
+<p class="addTask">Complete it by {{currentDate | date:'EEEE, MMMM d, y'}} at {{slots.epochTime*1000 | date: "h:mm a"}}</p>
 
 
 
-<button class="button button-block  button-balanced">Start Task</button>    
+<button class="button button-block  button-balanced" type="submit">Start Task</button>  
+
+</form>
+</div>
 	</ion-content>
 </ion-view>

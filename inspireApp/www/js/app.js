@@ -7,7 +7,6 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-datepicker', 'ionic-timepicker'])
 
-
 // factory('Tasks' ['$firebaseArray'], function($firebaseArray) {
 //   var tasksRef= new Firebase('https://appinspire.firebaseio.com/');
 //   return $firebaseArray(tasksRef);
@@ -106,5 +105,4 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
   $urlRouterProvider.otherwise('/splashpage');
 
 })
-
 

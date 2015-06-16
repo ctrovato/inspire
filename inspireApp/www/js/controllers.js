@@ -91,65 +91,105 @@ var url = 'https://appinspire.firebaseio.com/'
 
 // ============ User Controller ===========
 // =========================================
-.controller('UsersCtrl', function($scope) {})
+// .controller('UsersCtrl', 
+
+// 	function($scope, $location, $firebase, $firebaseAuth, $rootScope){
+// 		var url = 'https://appinspire.firebaseio.com/'
+// 		var ref = new Firebase(url); 
+// 		var tasks = $firebase(ref);
+// 		$scope.users = tasks.$asArray();
+
+
+// 		$scope.authObj = $firebaseAuth(ref);
+
+// 		$scope.authObj.$onAuth(function(authData) {
+// 			if (authData) {
+// 				var userRef =  new Firebase(url + "users/" + authData.uid);
+// 				$scope.sync = $firebase(userRef);
+// 				$rootScope.currentUser = $scope.sync.$asObject()
+
+// 				$rootScope.currentUser.$loaded().then(function(){
+// 					$scope.user = {};
+// 					$scope.user.name = $rootScope.user.name;
+// 					$scope.user.email = $rootScope.user.email;
+				
+// 					console.log("logged in", $scope.currentUser); //logging $scope.currentUser
+// 				});
+
+// 			} else {
+// 				console.log("Logged out");   //logging logged out
+// 			}
+// 		});
+// })
 
 
 
 // ============ Add Tasks Controller ===========
 // =============================================
-.controller('AddCtrl', function($scope, $ionicPopup) {
+.controller('AddCtrl', function($scope, $location, $firebaseObject, $ionicPopup, $firebaseArray, $firebaseAuth) {
 
-	$scope.currentDate = new Date();
+	// $scope.epochTime = 12600;
 
-	$scope.slots = [
-      {epochTime: 12600, step: 15, format: 12},
-      {epochTime: 54900, step: 1, format: 24}
- 	];
+	// $scope.slots = {epochTime: 12600, format: 12, step: 15};
 
- 	
-	// var url = 'https://appinspire.firebaseio.com/';
-	// 	var ref = new Firebase(url);
-	// 	var ref_tasks = new Firebase(url+"tasks/");  
-	// 	var tasks = $firebase(ref_tasks);
-	// 	$scope.tasks = tasks.$asArray();
+	// $scope.timePickerCallback = function (val) {
+	//   if (typeof (val) === 'undefined') {
+	//     console.log('Time not selected');
+	//   } else {
+	//     console.log('Selected time is : ', val);    // `val` will contain the selected time in epoch
+	//   }
+	// };
 
-	// 	$scope.authObj = $firebaseAuth(ref);
+// $scope.currentDate = new Date();
+// $scope.datePickerCallback = function (val) {
+//   if(typeof(val)==='undefined'){		
+//       console.log('Date not selected');
+//   }else{
+//       console.log('Selected date is : ', val);
+//   }
+// };
 
-	// 	$scope.authObj.$onAuth(function(authData) {
-	// 		if (authData) {
-	// 			var userRef =  new Firebase( url + "users/" + authData.uid);
-	// 			$scope.sync = $firebase(userRef);
-	// 			$rootScope.currentUser = $scope.sync.$asObject();
+
+	var url = 'https://appinspire.firebaseio.com/';
+	var ref = new Firebase(url);  
+
+    	$scope.authObj = $firebaseAuth(ref);
+
+
+	var ref_tasks = new Firebase(url+ "tasks/");  
+	
+		$scope.tasks = $firebaseArray(ref_tasks);
+
+		$scope.authObj.$onAuth(function(authData) {
+			if (authData) {
+				var userRef =  new Firebase( url + "users/" + authData.uid);
+				$scope.user = $firebaseObject(userRef);
 				
-	// 			console.log("logged in tasks ", $rootScope.currentUser); //logging $rootScope.currentUsers
+				console.log("logged in tasks ", $scope.user); //logging $rootScope.currentUsers
 
-	// 		} else {
-	// 			$location.path("/login");
-	// 		}
-	// 	});
+			} else {
+				$location.path("/login");
+			}
+		});
+		console.log($scope.user);  //logging $rootScope.currentUsers
 
-	// 	console.log($rootScope.currentUser);  //logging $rootScope.currentUsers
+	$scope.addTask = function(){
 
-	// $scope.addTask = function(){
+		$scope.task = {};
 
-	// 	console.log($scope.tasks); //logging $scope.tasks
-	// 	$scope.tasks.$add({
-	// 		name: $rootScope.currentUser.name,
-	// 		uid: $rootScope.currentUser.uid,
-	// 		title: $scope.title,
-	// 		date: Firebase.ServerValue.TIMESTAMP
+		console.log("title", $scope.task.title, "user", $scope.user); //logging $scope.tasks
+		$scope.tasks.$add({
+			name: $scope.user.name,
+			uid: $scope.user.$id,
+			title: $scope.task.title,
+			date: Firebase.ServerValue.TIMESTAMP
 
-	// 	}).then(function(){
-	// 		$scope.title = '';
-	// 		$scope.description = '';
-	// 		$scope.content = '';
-	// 		$scope.postForm.$setUntouched();
-	// 	})
+		}).then(function(){
+			$scope.task.title = '';
 
-	// } //addPost
+		})
 
-	// Time picker formatting
-
+	} //addTask
 
 })
 

@@ -2,29 +2,34 @@
 	<ion-content class="bkground2 padding">
 
 
-<div class="loginForm"> 
+<div class="loginForm" > 
 	<form name ="myForm"
 	ng-submit="addTask(task)"
 	novalidate> 
 
+	<img src="img/addBanner.svg" alt="Add Task Banner" style="width: 100%; height: auto;">
+	</br></br></>
 <!-- Adding Tasks --> 
 	<label class="item item-input">
 		<i class="icon ion-plus-round placeholder-icon"></i>
 		<input type="text" ng-model="task.title" placeholder="Add a Task">
 	</label>
 </br>
-<!-- Setting the Deadline with the Datepicker -->
-<ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">
-    <button class="button button-block button-positive">{{ currentDate | date:'dd - MMMM - yyyy' }}</button>
-</ionic-datepicker>
-</br>
-<!-- Setting the Deadline with the Timepicker -->
-	<ionic-timepicker etime="slots.epochTime" format="slots.format" step="slots.step" callback="timePickerCallback">    
-		<button class="button button-block button-energized"> Set a Time </button>
-	</ionic-timepicker>
-</br>
-<p class="addTask">Complete it by {{currentDate | date:'EEEE, MMMM d, y'}} at {{slots.epochTime*1000 | date: "h:mm a"}}</p>
+<p>Days till expiration:</p>
+<input type="number" min="1" max="7" style="width: 100%" ng-model="task.days"/>
 
+<!-- Setting the Deadline with the Datepicker -->
+<!-- <ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">
+    <button class="button button-block button-energized">{{ currentDate | date:'dd - MMMM - yyyy' }}</button>
+</ionic-datepicker>
+</br> -->
+<!-- Setting the Deadline with the Timepicker -->
+<!-- 	<ionic-timepicker etime="slots.epochTime" format="slots.format" step="slots.step" callback="timePickerCallback">    
+		<button class="button button-block button-energized"> Set a Time </button>
+	</ionic-timepicker> -->
+</br>
+<!-- <p class="addTask">Complete it by {{currentDate | date:'EEEE, MMMM d, y'}} at {{slots.epochTime*1000 | date: "h:mm a"}}</p>
+ -->
 
 
 <button class="button button-block  button-balanced" type="submit">Start Task</button>  

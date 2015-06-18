@@ -54,6 +54,7 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
+    controller: 'SignupCtrl'
 
   })
  
@@ -61,7 +62,7 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
   .state('dashboard', {
     url: '/dashboard',
     templateUrl: 'templates/dashboard.html',
-    controller: 'MainCtrl'
+    controller: 'UsersCtrl'
   })
  
   .state('tab.add', {

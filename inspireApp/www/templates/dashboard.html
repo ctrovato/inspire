@@ -1,7 +1,21 @@
 <ion-view view-title="Dashboard">
   <ion-content class="bkground padding">
 
-	<h3>You've reached the dashboard, {{currentUser.name}}.</h3>
+	<h3 class="currentUser">Hello, {{currentUser.name}}!</h3>
+
+	</br>
+	<div class="button-bar">
+		<a class="button button-clear icon2 ion-plus button-energized" href="#/tab/task"> Add Task</a>
+		<a class="button button-clear icon2 ion-ios-list-outline button-energized" href="#/tab/list"> Task List</a>
+	</div>
+	</br>
+	<h3>Current Task: {{task.title}}:</h3>
+	</br>
+	<div class="button-bar">
+		<a class="button button-clear icon2 ion-ribbon-b button-energized" href="#/tab/badges" > Badges</a>
+		<a class="button button-clear icon2 ion-android-person button-energized" href="#"> Profile</a>
+	</div>
+
 
   </ion-content>
 </ion-view>

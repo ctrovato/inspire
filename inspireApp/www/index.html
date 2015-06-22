@@ -42,7 +42,9 @@
             <ion-item href="#/">Profile</ion-item>
         </ion-list>
         <ion-list>
-            <ion-item ng-click="authObj.$unauth()">Logout</ion-item>
+<!--             <ion-item ng-click="authObj.$unauth()">Logout</ion-item> -->
+            <ion-item ng-hide="currentUser"><a ui-sref="login" >Login</a></ion-item>
+            <ion-item ng-show="currentUser" ng-click="authObj.$unauth()"><a ui-sref="#/">Log out</a></ion-item>
         </ion-list>   
     </ion-side-menu>
     <ion-side-menu-content>
@@ -52,7 +54,8 @@
             <button class="button icon button-clear ion-navicon" ng-click="toggleLeft()"></button>
         </div>
     <h1 class="title">Inspire</h1>
-    <button class="button button-icon icon ion-home"></button>
+
+    <button class="button button-icon icon ion-home" ui-sref="dashboard"></button>
     </ion-header-bar>
     
     <!--Application Views.-->

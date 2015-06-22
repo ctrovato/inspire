@@ -36,3 +36,11 @@ p {
 	font-family: 'Droid Sans', sans-serif;
 }
 
+.icon2{
+	font-size: 2em;
+	color:#f4ce2c;
+}
+.currentUser{
+	text-align: left;
+}
+

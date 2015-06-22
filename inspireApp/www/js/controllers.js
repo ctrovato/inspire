@@ -46,22 +46,21 @@ var url = 'https://appinspire.firebaseio.com/'
 
 		$scope.user={};
 
-
 		$scope.authObj.$onAuth(function(authData) {
-	if (authData) {
-		var userRef =  new Firebase(url + "users/" + authData.uid);
+			if (authData) {
+				var userRef =  new Firebase(url + "users/" + authData.uid);
 
-		$scope.currentUser = $firebaseObject(userRef);
+			$scope.currentUser = $firebaseObject(userRef);
 
-		$scope.currentUser.$loaded().then(function(){
-		
-			console.log("logged in", $scope.currentUser); //logging $scope.currentUser
-		});
+			$scope.currentUser.$loaded().then(function(){
+			
+				console.log("logged in", $scope.currentUser); //logging $scope.currentUser
+			});
 
-	} else {
-		console.log("Logged out");   //logging logged out
+			} else {
+				console.log("Logged out");   //logging logged out
 
-	}
+			}
 		});
 
 	$scope.register = function(){
@@ -69,18 +68,19 @@ var url = 'https://appinspire.firebaseio.com/'
 		console.log('password', $scope.user.password, 'email', $scope.user.email);
 
 		$scope.authObj.$createUser({
-		  email: $scope.user.email,
-		  password: $scope.user.password
+			email: $scope.user.email,
+			password: $scope.user.password
 		}).then(function(userData) {
-		  console.log("User " + userData.uid + " created successfully!");
+			
+			console.log("User " + userData.uid + " created successfully!");
 
-		  return $scope.authObj.$authWithPassword({
-		    email: $scope.user.email,
-		    password: $scope.user.password
-		  });
+			return $scope.authObj.$authWithPassword({
+				email: $scope.user.email,
+			    password: $scope.user.password
+		  	});
 		}).then(function(authData) {
 			$scope.authData = authData;
-		  console.log("Logged in as:", authData.uid);
+			console.log("Logged in as:", authData.uid);
 		}).catch(function(error) {
 		  console.error("Error: ", error);
 		})
@@ -132,9 +132,7 @@ var url = 'https://appinspire.firebaseio.com/'
 
 // ============ User Controller ===========
 // =========================================
-.controller('UsersCtrl', 
-
-	function($scope, $location, $firebaseAuth, $rootScope, $firebaseObject){
+.controller('UsersCtrl', function($scope, $location, $firebaseAuth, $rootScope, $firebaseObject){
 		var url = 'https://appinspire.firebaseio.com/'
 		var ref = new Firebase(url); 
 
@@ -162,7 +160,30 @@ var url = 'https://appinspire.firebaseio.com/'
 
 // ============ Add Tasks Controller ===========
 // =============================================
-.controller('AddCtrl', function($scope, $location, $firebaseObject, $ionicPopup, $firebaseArray, $firebaseAuth) {
+.controller('AddCtrl', function($scope, $rootScope, $location, $firebaseObject, $ionicPopup, $firebaseArray, $firebaseAuth) {
+
+		var url = 'https://appinspire.firebaseio.com/'
+		var ref = new Firebase(url); 
+
+		$scope.authObj = $firebaseAuth(ref);
+
+		$scope.authObj.$onAuth(function(authData) {
+			if (authData) {
+				var userRef =  new Firebase(url + "users/" + authData.uid);
+
+				$scope.currentUser = $firebaseObject(userRef);
+
+				$scope.currentUser.$loaded().then(function(){
+				
+					console.log("logged in", $scope.currentUser); //logging $scope.currentUser
+				});
+
+			} else {
+				console.log("Logged out");   //logging logged out
+				$location.path('/splashPage')
+			}
+		}); 
+
 
 	$scope.epochTime = -18000
 

@@ -18,7 +18,7 @@ p {
 	background: url("../img/inspireBackground.jpg");
 }
 
-.loginForm{
+.myForm{
 	padding-top: 50px;
 }
 
@@ -38,9 +38,12 @@ p {
 
 .icon2{
 	font-size: 2em;
-	color:#f4ce2c;
 }
 .currentUser{
 	text-align: left;
+	font-size: 1.6em;
+}
+.taskStyle{
+	margin-top: 40px;
 }
 

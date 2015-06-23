@@ -2,21 +2,22 @@
 	<ion-content class="bkground2 padding">
 
 
-<div class="loginForm" > 
+<div class="myForm" > 
 	<form name ="myForm"
 	ng-submit="addTask(task)"
 	novalidate> 
 
 	<img src="img/addBanner.svg" alt="Add Task Banner" style="width: 100%; height: auto;">
-	</br></br></>
-<!-- Adding Tasks --> 
-	<label class="item item-input">
-		<i class="icon ion-plus-round placeholder-icon"></i>
-		<input type="text" ng-model="task.title" placeholder="Add a Task">
-	</label>
-</br>
-<p>Days till expiration:</p>
-<input type="number" min="1" max="7" style="width: 100%" ng-model="task.days"/>
+	<div class="taskStyle">
+	<!-- Adding Tasks --> 
+		<label class="item item-input">
+			<i class="icon ion-plus-round placeholder-icon"></i>
+			<input type="text" ng-model="task.title" placeholder="Add a Task">
+		</label>
+		</br>
+		<p>Days till expiration:</p>
+		<input type="number" min="1" max="7" style="width: 100%" ng-model="task.days"/>
+	</div>
 
 <!-- Setting the Deadline with the Datepicker -->
 <!-- <ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">

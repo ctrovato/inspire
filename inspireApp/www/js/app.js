@@ -57,6 +57,12 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
     controller: 'SignupCtrl'
 
   })
+
+  .state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html',
+    controller: 'AddCtrl'
+  })
  
 
   .state('dashboard', {
@@ -65,6 +71,14 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
     controller: 'AddCtrl'
   })
  
+
+  .state('viewTask', {
+    url: '/users/:user/tasks/:task',
+    templateUrl: 'templates/viewTask.html',
+    controller: 'AddCtrl'
+  })
+
+
   .state('tab.add', {
     url: '/add',
     views: {

@@ -160,7 +160,7 @@ var url = 'https://appinspire.firebaseio.com/'
 
 // ============ Add Tasks Controller ===========
 // =============================================
-.controller('AddCtrl', function($scope, $rootScope, $location, $firebaseObject, $ionicPopup, $firebaseArray, $firebaseAuth) {
+.controller('AddCtrl', function($scope, $rootScope, $stateParams, $location, $firebaseObject, $ionicPopup, $firebaseArray, $firebaseAuth) {
 
 		var url = 'https://appinspire.firebaseio.com/'
 		var ref = new Firebase(url); 
@@ -183,6 +183,8 @@ var url = 'https://appinspire.firebaseio.com/'
 				$location.path('/splashPage')
 			}
 		}); 
+
+		console.log($stateParams);
 
 
 	$scope.epochTime = -18000

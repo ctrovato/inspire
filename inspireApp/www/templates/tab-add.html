@@ -16,21 +16,21 @@
 		</label>
 		</br>
 		<p>Days till expiration:</p>
-		<input type="number" min="1" max="7" style="width: 100%" ng-model="task.days"/>
-	</div>
+<!-- 		<input type="number" min="1" max="7" style="width: 100%" ng-model="task.days"/>
+ -->	</div>
 
 <!-- Setting the Deadline with the Datepicker -->
-<!-- <ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">
+<ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">
     <button class="button button-block button-energized">{{ currentDate | date:'dd - MMMM - yyyy' }}</button>
 </ionic-datepicker>
-</br> -->
-<!-- Setting the Deadline with the Timepicker -->
-<!-- 	<ionic-timepicker etime="slots.epochTime" format="slots.format" step="slots.step" callback="timePickerCallback">    
-		<button class="button button-block button-energized"> Set a Time </button>
-	</ionic-timepicker> -->
 </br>
-<!-- <p class="addTask">Complete it by {{currentDate | date:'EEEE, MMMM d, y'}} at {{slots.epochTime*1000 | date: "h:mm a"}}</p>
- -->
+<!-- Setting the Deadline with the Timepicker -->
+	<ionic-timepicker etime="slots.epochTime" format="slots.format" step="slots.step" callback="timePickerCallback">    
+		<button class="button button-block button-energized"> Set a Time </button>
+	</ionic-timepicker>
+</br>
+<p class="addTask">Complete it by {{currentDate | date:'EEEE, MMMM d, y'}} at {{slots.epochTime}} {{(slots.epochTime+(timezoneOffset*60))*1000 | date:"h:mm a"}}</p>
+
 
 
 <button class="button button-block  button-balanced" type="submit">Start Task</button>  

@@ -20,7 +20,7 @@ angular.module('starter.controllers', ['firebase'])
 
 				$scope.currentUser.$loaded().then(function(){
 				
-					console.log("logged in", $scope.currentUser); //logging $scope.currentUser
+					// console.log("logged in", $scope.currentUser); //logging $scope.currentUser
 				});
 
 			} else {
@@ -102,6 +102,8 @@ var url = 'https://appinspire.firebaseio.com/'
 		})
 	}
 
+
+
 	$scope.login = function(){
 
 		console.log("working");
@@ -120,6 +122,27 @@ var url = 'https://appinspire.firebaseio.com/'
 				$location.path('/splashPage')
 			});
 	} 
+
+
+	$scope.facebookLogin = function(){
+
+		var ref = new Firebase("https://appinspire.firebaseio.com");
+			ref.authWithOAuthPopup("facebook", function(error, authData) {
+				if (error) {
+					console.log("Login Failed!", error);
+					$location.path('/splashPage')
+				}else {
+					console.log("Authenticated successfully with payload:", authData);
+					$location.path('/dashboard')
+
+					$scope.currentUser = authData.val()
+					console.log("Hello", authData.val());
+
+
+				}
+		})
+	}
+
 
 	$scope.go = function (path) {
   		
@@ -175,7 +198,7 @@ var url = 'https://appinspire.firebaseio.com/'
 
 				$scope.currentUser.$loaded().then(function(){
 				
-					console.log("logged in", $scope.currentUser); //logging $scope.currentUser
+					// console.log("logged in", $scope.currentUser); //logging $scope.currentUser
 				});
 
 			} else {
@@ -187,26 +210,34 @@ var url = 'https://appinspire.firebaseio.com/'
 		console.log($stateParams);
 
 
-	$scope.epochTime = -18000
 
-	$scope.slots = {epochTime: -18000 , format: 12, step: 30};
+		var d = new Date()
+		$scope.timezoneOffset = d.getTimezoneOffset();
 
-	$scope.timePickerCallback = function (val) {
-	  if (typeof (val) === 'undefined') {
-	    console.log('Time not selected');
-	  } else {
-	    console.log('Selected time is : ', val);    // `val` will contain the selected time in epoch
-	  }
-	};
+		// ____ Time Picker _____
+		$scope.epochTime = 18000
 
-$scope.currentDate = new Date();
-$scope.datePickerCallback = function (val) {
-  if(typeof(val)==='undefined'){		
-      console.log('Date not selected');
-  }else{
-      console.log('Selected date is : ', val);
-  }
-};
+		$scope.slots = {epochTime: 18000 , format: 12, step: 30};
+
+		$scope.timePickerCallback = function (val) {
+			if (typeof (val) === 'undefined') {
+			console.log('Time not selected');
+			} else {
+			console.log('Selected time is : ', val);    // `val` will contain the selected time in epoch
+			}
+		};
+
+
+		// ____ Date Picker _____
+		$scope.currentDate = new Date();
+		$scope.datePickerCallback = function (val) {
+			console.log(val);
+			if(typeof(val)==='undefined'){		
+			  console.log('Date not selected');
+			}else{
+			  console.log('Selected date is : ', val);
+			}
+		};
 
 	var url = 'https://appinspire.firebaseio.com/';
 	var ref = new Firebase(url);  
@@ -228,7 +259,6 @@ $scope.datePickerCallback = function (val) {
 
 	$scope.addTask = function(task){
 
-		// console.log(typeof $scope.user.tasks);
 					
 		console.log("title", task.title, "user", $scope.user); //logging $scope.tasks
 
@@ -292,7 +322,7 @@ $scope.datePickerCallback = function (val) {
 				var taskRef =  new Firebase( url + "users/" + authData.uid + "/tasks/");
 				$scope.user = $firebaseObject(userRef);
 				$scope.tasks = $firebaseArray(taskRef);
-				console.log("logged in:", $scope.user); //logging $rootScope.currentUsers
+				// console.log("logged in:", $scope.user); //logging $rootScope.currentUsers
 
 			} else {
 				$location.path("/splashPage");

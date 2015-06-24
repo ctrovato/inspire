@@ -32,7 +32,7 @@ angular.module('starter.controllers', ['firebase'])
 
 // ============ Sign Up | Login Controller ===========
 // ===================================================
-.controller('SignupCtrl', function($scope, $location, $firebaseObject, $firebaseAuth) {
+.controller('SignupCtrl', function($scope, $rootScope, $location, $firebaseObject, $firebaseAuth) {
 
 var url = 'https://appinspire.firebaseio.com/' 
 		var ref = new Firebase(url); 
@@ -135,8 +135,13 @@ var url = 'https://appinspire.firebaseio.com/'
 					console.log("Authenticated successfully with payload:", authData);
 					$location.path('/dashboard')
 
-					$scope.currentUser = authData.val()
-					console.log("Hello", authData.val());
+					var  facebookAuth = JSON.stringify(authData)
+
+					$rootScope.facebookUser = JSON.parse(facebookAuth);
+
+					console.log("FacebookData" , $rootScope.facebookUser);
+
+
 
 
 				}
@@ -207,7 +212,7 @@ var url = 'https://appinspire.firebaseio.com/'
 			}
 		}); 
 
-		console.log($stateParams);
+		// console.log($stateParams);
 
 
 

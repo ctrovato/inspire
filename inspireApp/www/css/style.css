@@ -17,6 +17,21 @@ p {
 .bkground2{
 	background: url("../img/inspireBackground.jpg");
 }
+#userBar{
+	margin-top: none;
+}
+
+#dashboardStyling{
+	margin-top: 60px;
+}
+
+.button-bar{
+	margin-top: 40px;
+}
+
+.currentTask{
+	margin-top: 20px;
+}
 
 .myForm{
 	padding-top: 50px;
@@ -35,12 +50,20 @@ p {
 	padding: 3px 0px 3px 0px;
 	font-family: 'Droid Sans', sans-serif;
 }
-
+.profileImg{
+	z-index: 100;
+    border-radius: 50px;
+    float: left;
+    width: 60px;
+    height: 60px;
+}
 .icon2{
 	font-size: 2em;
 }
 .currentUser{
-	text-align: left;
+	width: 250px;
+	float: right;
+	text-align: right;
 	font-size: 1.6em;
 }
 .taskStyle{

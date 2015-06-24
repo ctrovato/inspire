@@ -1,15 +1,21 @@
 <ion-view view-title="View Task">
 	<ion-content class="bkground2 padding">
-
-	<img src="{{currentUser.facebook.cachedUserProfile.picture.url }}  " alt="profilePic">
-	<h3 class="currentUser">Hello, {{currentUser.name || currentUser.facebook.displayName}}!</h3>
+	<div id="userBar">
+		<span class="userList">
+			<img  class="profileImg" src="{{facebookUser.facebook.cachedUserProfile.picture.data.url }}  " alt="profilePic">
+			<h3 class="currentUser">Hello, {{currentUser.name || facebookUser.facebook.displayName}}!</h3>
+		</span> 
+	</div><!-- #userBar --> 	
 	</br></br>
 
 	<h3>Email Address: {{currentUser.email}}</h3>
 
-	<pre>{{currentUser | json }}</pre>
-
+	<h3>Gender: {{facebookUser.facebook.cachedUserProfile.gender}}</h3>
 	
 
+
+
+
+<!-- 	<pre>{{ facebookUser | json }}</pre> -->
 	</ion-content>
 </ion-view>

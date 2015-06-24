@@ -1,5 +1,5 @@
 <ion-view view-title="Sign Up">
-  <ion-content class="bkground padding">
+  <ion-content class="bkground padding" ng-controller="SignupCtrl">
 
 <div class="myForm"> 
 	<form name ="myForm"
@@ -41,7 +41,7 @@
 				</br>
 			<button class="button button-block  button-energized" >Sign Up</button>
 				</br>
-			<button class="button button-block  button-positive"> Login via Facebook</button>
+			<button class="button button-block  button-positive" ng-click="facebookLogin()"> Login via Facebook</button>
 			<button class="button button-block button-clear button-light" ui-sref="login">Login</button>
 
 	</form>

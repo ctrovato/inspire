@@ -75,7 +75,7 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
   .state('viewTask', {
     url: '/users/:user/tasks/:task',
     templateUrl: 'templates/viewTask.html',
-    controller: 'AddCtrl'
+    controller: 'ViewTaskCtrl'
   })
 
 

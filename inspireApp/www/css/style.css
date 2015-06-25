@@ -34,7 +34,7 @@ p {
 }
 
 .myForm{
-	padding-top: 50px;
+	padding-top: 10px;
 }
 
 .button{
@@ -50,12 +50,40 @@ p {
 	padding: 3px 0px 3px 0px;
 	font-family: 'Droid Sans', sans-serif;
 }
+.bannerStyle{
+	margin-bottom: 5px;
+}
+.currentTaskTitle{
+	background: url("../img/emptyBanner.svg") no-repeat;
+	background-size: contain;
+	height: 90px;
+	text-align: center;
+	width: 355px;
+	font-family: 'Century Gothic', sans-serif;
+	font-weight: bold;
+	padding: 12px;
+	color: #fff;
+	font-size: 1.4em;
+}
+
+.addTaskInput{
+	margin-top: 50px;
+}
+
+.taskStyle{
+	margin-top: 20px;
+}
+
 .profileImg{
 	z-index: 100;
     border-radius: 50px;
     float: left;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
+}
+
+.hideImage{
+	display: none;
 }
 .icon2{
 	font-size: 2em;
@@ -64,7 +92,7 @@ p {
 	width: 250px;
 	float: right;
 	text-align: right;
-	font-size: 1.6em;
+	font-size: 1.2em;
 }
 .taskStyle{
 	margin-top: 40px;

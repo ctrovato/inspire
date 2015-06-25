@@ -42,7 +42,7 @@
             <ion-item ><a ui-sref="profile">Profile</a></ion-item>
         </ion-list>
         <ion-list>
-<!--             <ion-item ng-click="authObj.$unauth()">Logout</ion-item> -->
+<!--    <ion-item ng-click="authObj.$unauth()">Logout</ion-item> -->
             <ion-item ng-hide="currentUser"><a ui-sref="login" >Login</a></ion-item>
             <ion-item ng-show="currentUser" ng-click="authObj.$unauth()"><a ui-sref="#/">Log out</a></ion-item>
         </ion-list>   

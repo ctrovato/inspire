@@ -103,7 +103,6 @@ var url = 'https://appinspire.firebaseio.com/'
 	}
 
 
-
 	$scope.login = function(){
 
 		console.log("working");
@@ -140,9 +139,6 @@ var url = 'https://appinspire.firebaseio.com/'
 					$rootScope.facebookUser = JSON.parse(facebookAuth);
 
 					console.log("FacebookData" , $rootScope.facebookUser);
-
-
-
 
 				}
 		})
@@ -203,7 +199,6 @@ var url = 'https://appinspire.firebaseio.com/'
 
 				$scope.currentUser.$loaded().then(function(){
 				
-					// console.log("logged in", $scope.currentUser); //logging $scope.currentUser
 				});
 
 			} else {
@@ -214,106 +209,111 @@ var url = 'https://appinspire.firebaseio.com/'
 
 		// console.log($stateParams);
 
-
-
-		var d = new Date()
-		$scope.timezoneOffset = d.getTimezoneOffset();
+		$scope.task = {}
 
 		// ____ Time Picker _____
+		var prependZero = function(param) {
+	        
+	        if (String(param).length < 2) {
+	        	return "0" + String(param);
+	        }
+	        	return param;
+	    }
+
+      	
+      	var epochParser = function(val) {
+	        
+	        if (val === null) {
+	         	return "00:00";
+	        } else {
+	        	var meridian = ['AM', 'PM'];
+	        	var hours = parseInt(val / 3600);
+            	var minutes = (val / 60) % 60;
+            	var hoursRes = hours > 12 ? (hours - 12) : hours;
+
+            	var currentMeridian = meridian[parseInt(hours / 12)];
+
+            	return(prependZero(hoursRes) +  ":" + prependZero(minutes) + " " +  currentMeridian);
+            }
+        }	
+
 		$scope.epochTime = 18000
 
 		$scope.slots = {epochTime: 18000 , format: 12, step: 30};
 
 		$scope.timePickerCallback = function (val) {
 			if (typeof (val) === 'undefined') {
-			console.log('Time not selected');
+				console.log('Time not selected');
 			} else {
-			console.log('Selected time is : ', val);    // `val` will contain the selected time in epoch
+				$scope.task.time = epochParser(val)
+				console.log('Selected time is : ', val);    // `val` will contain the selected time in epoch
 			}
 		};
 
 
 		// ____ Date Picker _____
 		$scope.currentDate = new Date();
+		
 		$scope.datePickerCallback = function (val) {
 			console.log(val);
 			if(typeof(val)==='undefined'){		
-			  console.log('Date not selected');
+				console.log('Date not selected');
 			}else{
-			  console.log('Selected date is : ', val);
+			  	console.log('Selected date is : ', val);
 			}
 		};
 
-	var url = 'https://appinspire.firebaseio.com/';
-	var ref = new Firebase(url);  
+			var url = 'https://appinspire.firebaseio.com/';
+			var ref = new Firebase(url);  
 
-    	$scope.authObj = $firebaseAuth(ref);
- 	
-		$scope.authObj.$onAuth(function(authData) {
-			if (authData) {
-				var userRef =  new Firebase( url + "users/" + authData.uid);
-				var taskRef =  new Firebase( url + "users/" + authData.uid + "/tasks/");
-				$scope.user = $firebaseObject(userRef);
-				$scope.tasks = $firebaseArray(taskRef);
-				console.log("logged in:", $scope.user); //logging $rootScope.currentUsers
+	    	$scope.authObj = $firebaseAuth(ref);
+		
+			$scope.authObj.$onAuth(function(authData) {
+				if (authData) {
+					var userRef =  new Firebase( url + "users/" + authData.uid);
+					var taskRef =  new Firebase( url + "users/" + authData.uid + "/tasks/");
+					$scope.user = $firebaseObject(userRef);
+					$scope.tasks = $firebaseArray(taskRef);
+					console.log("logged in:", $scope.user); //logging $rootScope.currentUsers
+					console.log(taskRef);
 
-			} else {
-				$location.path("/splashPage");
-			}
-		});
+				} else {
+					$location.path("/splashPage");
+				}
+			});
 
-	$scope.addTask = function(task){
+		$scope.addTask = function(task, date){
+			console.log('DATE:', date)
+						
+			console.log("title", task.title, "user", date); //logging $scope.tasks
 
-					
-		console.log("title", task.title, "user", $scope.user); //logging $scope.tasks
+			// var currentTime = Math.round(new Date().getTime()/1000.0);
+			// console.log(currentTime);
 
-
-		var currentTime = Math.round(new Date().getTime()/1000.0);
-		console.log(currentTime);
-
-		var endTime = currentTime + (task.days*86400);
-		console.log(endTime);
-
-
-		$scope.tasks.$add({
-			name: $scope.user.name,
-			uid: $scope.user.$id,
-			title: task.title,
-			date: Firebase.ServerValue.TIMESTAMP,
-			expire: endTime,
-			status: "incommplete"
+			// var endTime = currentTime + (task.days*86400);
+			// // console.log(endTime);
 
 
-		}).then(function(){
-			// $scope.task = {};
-			task.title = '';
-		})
-
-// Deadline Counter
-		// var deadline;
-  //       $scope.time = function() {
-  //         // Don't start a new fight if we are already fighting
-  //         if ( angular.isDefined(stop) ) return;
-
-  //         deadline = $interval(function() {
-  //           if (date > 0 && $expire > 0) {
-  //           } else {
-  //             $scope.stopFight();
-  //           }
-  //         }, 100);
-  //       };
-
-  //        $scope.expire = function() {
-  //         if (angular.isDefined(deadline)) {
-  //           $interval.cancel(deadline);
-  //           deadline = undefined;
-  //         }
-  //       };
-
+			$scope.tasks.$add({
+				name: $scope.user.name,
+				uid: $scope.user.$id,
+				title: task.title,
+				dateFirebase: Firebase.ServerValue.TIMESTAMP,
+				expire: date,
+				deadlineTime: $scope.task.time,
+				statusIncomplete: "incommplete",
+				statusComplete: "complete"
+			}).then(function(){
+				// $scope.task = {};
+				task.title = '';
+			})
 
 	} //addTask
 })
 
+
+// ============ List Controller ===========
+// =============================================
 .controller('ListCtrl', function($scope, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
 
 	var url = 'https://appinspire.firebaseio.com/';
@@ -333,10 +333,97 @@ var url = 'https://appinspire.firebaseio.com/'
 				$location.path("/splashPage");
 			}
 		});
+})
+
+// ============ View Task Controller ===========
+// =============================================
+.controller('ViewTaskCtrl', function($scope, $stateParams, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
+
+	var url = 'https://appinspire.firebaseio.com/';
+	var ref = new Firebase(url);  
+
+    	$scope.authObj = $firebaseAuth(ref);
+ 	
+		$scope.authObj.$onAuth(function(authData) {
+			if (authData) {
+				var userRef =  new Firebase( url + "users/" + authData.uid);
+				var taskRef =  new Firebase( url + "users/" + authData.uid + "/tasks/" + $stateParams.task);
+				$scope.user = $firebaseObject(userRef);
+				$scope.task = $firebaseObject(taskRef);
+					$scope.task.$loaded().then(function(data){
+						$scope.task = data;
+						var countdownTime = $scope.task.deadlineTime;
+						var currentTime = 0;
+
+					}).catch(function(error){
+						console.log(error);
+					})
+				// console.log("logged in:", $scope.user); //logging $rootScope.currentUsers
+
+			} else {
+				$location.path("/splashPage");
+			}
+		});
+
+
+
+
+// Deadline Counter
+
+		
+
+		$scope.checkDeadline = function(){
+			if (currentTime === $scope.task.deadlineTime){
+				$scope.task == expire
+			}else{
+				countdownTime - 1000
+			}
+		} 
+
+
+
+
+  //       $scope.counter = function() {
+  //         if ($scope.task.deadlineTime){
+  //         }
+
+  //         deadline = $interval(function() {
+  //           if (date > 0 && $expire > 0) {
+  //           } else {
+  //             $scope.stopFight();
+  //           }
+  //         }, 100);
+  //       };
+
+  //        $scope.expire = function() {
+  //         if (angular.isDefined(deadline)) {
+  //           $interval.cancel(deadline);
+  //           deadline = undefined;
+  //         }
+  //       };
+
+
+
+		// $scope.completeTask = function(){
+		// 	if ()
+
+
+
+		// 	} //completeTask
+
+
+
+
+
+
 
 })
 
-.controller('BadgesCtrl', function($scope) {})
+// ============ Badges Controller ===========
+// =============================================
+.controller('BadgesCtrl', function($scope) {
+
+})
 
 
 

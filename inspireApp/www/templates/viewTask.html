@@ -2,7 +2,15 @@
 <ion-view view-title="View Task">
 	<ion-content class="bkground2 padding">
 		<div class="taskStyle">
-			<h2>{{task.title}}</h2>
+
+			<h1 class="currentTaskTitle">{{task.title}}</h1>
+
+			<h2>{{$scope.countdownTime}}</h2>
+
+			<button class="button button-block  button-balanced" type="submit" ng-click="completeTask(task)">Complete Task</button>  	
+
 		</div>
+
+
 	</ion-content>
 </ion-view>

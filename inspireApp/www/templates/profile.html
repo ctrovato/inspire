@@ -2,20 +2,17 @@
 	<ion-content class="bkground2 padding">
 	<div id="userBar">
 		<span class="userList">
-			<img  class="profileImg" src="{{facebookUser.facebook.cachedUserProfile.picture.data.url }}  " alt="profilePic">
+			<img  ng-class="facebookUser ?  'profileImg' : 'hideImage'" src="{{facebookUser.facebook.cachedUserProfile.picture.data.url }}" alt="profilePic">
 			<h3 class="currentUser">Hello, {{currentUser.name || facebookUser.facebook.displayName}}!</h3>
 		</span> 
 	</div><!-- #userBar --> 	
 	</br></br>
 
-	<h3>Email Address: {{currentUser.email}}</h3>
+	<h3>Email Address: {{currentUser.email}} </h3>
 
 	<h3>Gender: {{facebookUser.facebook.cachedUserProfile.gender}}</h3>
 	
 
-
-
-
-<!-- 	<pre>{{ facebookUser | json }}</pre> -->
+	<!-- 	<pre>{{ facebookUser | json }}</pre> -->
 	</ion-content>
 </ion-view>

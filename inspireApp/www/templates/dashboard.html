@@ -1,12 +1,12 @@
 <ion-view view-title="Dashboard">
   <ion-content class="bkground2 padding" >
 
-	<img  class="profileImg" src="{{facebookUser.facebook.cachedUserProfile.picture.data.url }}"  alt="profilePic">
+	<img  ng-class="facebookUser ?  'profileImg' : 'hideImage'"  src="{{facebookUser.facebook.cachedUserProfile.picture.data.url }}"  alt="profilePic">
 	<h3 class="currentUser">Hello, {{currentUser.name || facebookUser.facebook.displayName}}!</h3>
 
 <!-- <div id="dashboardStyling"> -->
 	<div class="button-bar">
-		<a class="button button-clear icon2 ion-plus button-energized" href="#/tab/task"> Add Task</a>
+		<a class="button button-clear icon2 ion-plus button-energized" href="#/tab/add"> Add Task</a>
 		<a class="button button-clear icon2 ion-ios-list-outline button-energized" href="#/tab/list"> Task List</a>
 	</div>
 		</br>

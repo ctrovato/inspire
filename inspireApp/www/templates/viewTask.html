@@ -5,12 +5,22 @@
 
 			<h1 class="currentTaskTitle">{{task.title}}</h1>
 
-			<h2>{{$scope.countdownTime}}</h2>
+			<h3>Expires on:</h3>
 
-			<button class="button button-block  button-balanced" type="submit" ng-click="completeTask(task)">Complete Task</button>  	
+			<h2></h2>
 
+
+<!-- 
+			<h2 class="clockDisplay">00:12:00</h2>
+			<ul class="timeLables">
+				<li>Hrs.</li>
+				<li>Min.</li>
+				<li>Sec.</li>
+			</ul> -->
+			</br></br>
+			<button class="button button-block  button-balanced" type="submit" ng-click="completeTask(task)">Complete Task</button> 
 		</div>
 
-
 	</ion-content>
+
 </ion-view>

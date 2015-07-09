@@ -8,11 +8,12 @@
 	</div><!-- #userBar --> 	
 	</br></br>
 
-	<h3>Email Address: {{currentUser.email}} </h3>
+	<h3 ng-class="currentUser ?  'userInfo' : 'hideText'"  >Email Address: {{currentUser.email}} </h3>
 
-	<h3>Gender: {{facebookUser.facebook.cachedUserProfile.gender}}</h3>
+	<h3 ng-class="facebookUser ?  'userInfo' : 'hideText'" >Gender: {{facebookUser.facebook.cachedUserProfile.gender}}</h3>
 	
-
+	
 	<!-- 	<pre>{{ facebookUser | json }}</pre> -->
 	</ion-content>
 </ion-view>
+ 

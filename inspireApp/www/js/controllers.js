@@ -122,7 +122,6 @@ var url = 'https://appinspire.firebaseio.com/'
 			});
 	} 
 
-
 	$scope.facebookLogin = function(){
 
 		var ref = new Firebase("https://appinspire.firebaseio.com");
@@ -139,11 +138,9 @@ var url = 'https://appinspire.firebaseio.com/'
 					$rootScope.facebookUser = JSON.parse(facebookAuth);
 
 					console.log("FacebookData" , $rootScope.facebookUser);
-
 				}
-		})
+			})
 	}
-
 
 	$scope.go = function (path) {
   		
@@ -285,7 +282,14 @@ var url = 'https://appinspire.firebaseio.com/'
 		$scope.addTask = function(task, date){
 			console.log('DATE:', date)
 						
-			console.log("title", task.title, "user", date); //logging $scope.tasks
+
+			var saveDate = Date.parse(date)/1000;
+
+			// var saveDate = new Date(date.getFullYear(), date.getMonth(), date.getDay(), )
+
+
+			console.log("title", task.title, "date", saveDate); //logging $scope.tasks
+
 
 			// var currentTime = Math.round(new Date().getTime()/1000.0);
 			// console.log(currentTime);
@@ -293,13 +297,12 @@ var url = 'https://appinspire.firebaseio.com/'
 			// var endTime = currentTime + (task.days*86400);
 			// // console.log(endTime);
 
-
 			$scope.tasks.$add({
 				name: $scope.user.name,
 				uid: $scope.user.$id,
 				title: task.title,
 				dateFirebase: Firebase.ServerValue.TIMESTAMP,
-				expire: date,
+				expireDate: saveDate,
 				deadlineTime: $scope.task.time,
 				statusIncomplete: "incommplete",
 				statusComplete: "complete"
@@ -307,6 +310,17 @@ var url = 'https://appinspire.firebaseio.com/'
 				// $scope.task = {};
 				task.title = '';
 			})
+
+		   //  $scope.badges = [
+	    //         {name: 'Go Running', badge: ''},
+	    //         {name: 'Workout', badge: ''}
+		   //  ];
+
+		   //  $scope.filterBadges=function(){
+	   
+	   	// 	$scope.filteredArray = filterFilter($scope.badges, {name:$scope.data});
+	  		// };
+	
 
 	} //addTask
 })
@@ -346,8 +360,8 @@ var url = 'https://appinspire.firebaseio.com/'
  	
 		$scope.authObj.$onAuth(function(authData) {
 			if (authData) {
-				var userRef =  new Firebase( url + "users/" + authData.uid);
-				var taskRef =  new Firebase( url + "users/" + authData.uid + "/tasks/" + $stateParams.task);
+				var userRef = new Firebase( url + "users/" + authData.uid);
+				var taskRef = new Firebase( url + "users/" + authData.uid + "/tasks/" + $stateParams.task);
 				$scope.user = $firebaseObject(userRef);
 				$scope.task = $firebaseObject(taskRef);
 					$scope.task.$loaded().then(function(data){
@@ -364,64 +378,12 @@ var url = 'https://appinspire.firebaseio.com/'
 				$location.path("/splashPage");
 			}
 		});
-
-
-
-
-// Deadline Counter
-
-		
-
-		$scope.checkDeadline = function(){
-			if (currentTime === $scope.task.deadlineTime){
-				$scope.task == expire
-			}else{
-				countdownTime - 1000
-			}
-		} 
-
-
-
-
-  //       $scope.counter = function() {
-  //         if ($scope.task.deadlineTime){
-  //         }
-
-  //         deadline = $interval(function() {
-  //           if (date > 0 && $expire > 0) {
-  //           } else {
-  //             $scope.stopFight();
-  //           }
-  //         }, 100);
-  //       };
-
-  //        $scope.expire = function() {
-  //         if (angular.isDefined(deadline)) {
-  //           $interval.cancel(deadline);
-  //           deadline = undefined;
-  //         }
-  //       };
-
-
-
-		// $scope.completeTask = function(){
-		// 	if ()
-
-
-
-		// 	} //completeTask
-
-
-
-
-
-
-
 })
 
 // ============ Badges Controller ===========
 // =============================================
 .controller('BadgesCtrl', function($scope) {
+
 
 })
 

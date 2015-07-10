@@ -183,6 +183,18 @@ var url = 'https://appinspire.firebaseio.com/'
 // =============================================
 .controller('AddCtrl', function($scope, $rootScope, $stateParams, $location, $firebaseObject, $ionicPopup, $firebaseArray, $firebaseAuth) {
 
+		console.log(new Date(1436824800000 - 1436566709350));
+		var difference = 1436824800000 - new Date().getTime()
+		var minutes = 1000 * 60
+		var hours = minutes * 60
+		var days = hours * 24
+		var differenceDays = Math.floor(difference/days )
+		var differenceHours =  Math.floor((difference-(differenceDays*days))/hours)
+		console.log('days:', differenceDays );
+		console.log('hours:', differenceHours)
+		console.log('minutes', Math.floor((difference- differenceDays*days - differenceHours*hours)/minutes))
+
+
 		var url = 'https://appinspire.firebaseio.com/'
 		var ref = new Firebase(url); 
 
@@ -242,6 +254,7 @@ var url = 'https://appinspire.firebaseio.com/'
 			if (typeof (val) === 'undefined') {
 				console.log('Time not selected');
 			} else {
+				$scope.time = val;
 				$scope.task.time = epochParser(val)
 				console.log('Selected time is : ', val);    // `val` will contain the selected time in epoch
 			}
@@ -281,15 +294,21 @@ var url = 'https://appinspire.firebaseio.com/'
 
 		$scope.addTask = function(task, date){
 			console.log('DATE:', date)
-						
+			
+			
 
-			var saveDate = Date.parse(date)/1000;
+			var saveDate = Date.parse(date);
+			var saveTime = ($scope.time)*1000;
+
+			var timeStamp = saveDate + saveTime;
+
+
 
 			// var saveDate = new Date(date.getFullYear(), date.getMonth(), date.getDay(), )
 
 
-			console.log("title", task.title, "date", saveDate); //logging $scope.tasks
-
+			console.log("Title: ", task.title, "Date: ", saveDate, "Time: ", saveTime); //logging $scope.tasks
+			console.log($scope.time);
 
 			// var currentTime = Math.round(new Date().getTime()/1000.0);
 			// console.log(currentTime);
@@ -302,8 +321,7 @@ var url = 'https://appinspire.firebaseio.com/'
 				uid: $scope.user.$id,
 				title: task.title,
 				dateFirebase: Firebase.ServerValue.TIMESTAMP,
-				expireDate: saveDate,
-				deadlineTime: $scope.task.time,
+				expiration: timeStamp,
 				statusIncomplete: "incommplete",
 				statusComplete: "complete"
 			}).then(function(){
@@ -311,19 +329,9 @@ var url = 'https://appinspire.firebaseio.com/'
 				task.title = '';
 			})
 
-		   //  $scope.badges = [
-	    //         {name: 'Go Running', badge: ''},
-	    //         {name: 'Workout', badge: ''}
-		   //  ];
+	}; //addTask
 
-		   //  $scope.filterBadges=function(){
-	   
-	   	// 	$scope.filteredArray = filterFilter($scope.badges, {name:$scope.data});
-	  		// };
-	
-
-	} //addTask
-})
+	})
 
 
 // ============ List Controller ===========

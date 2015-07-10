@@ -15,8 +15,8 @@
 
 			<ion-list>
 				<ion-item ng-repeat="task in tasks | filter:search:strict">
-					<a href="#/users/{{currentUser.$id}}/tasks/{{task.$id}}">{{task.title}}:</a>
-					<p>{{deadline}}</p>
+					<a href="#/users/{{currentUser.$id}}/tasks/{{task.$id}}">{{task.title}}</a>
+
 					<ion-option-button class="button-energized" ng-click="completeTask(task)">
 						<i class="icon ion-checkmark"></i>
 					</ion-option-button>

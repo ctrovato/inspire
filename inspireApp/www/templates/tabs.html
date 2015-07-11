@@ -3,7 +3,7 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-tabs class="tabs-icon-top tabs-color-active-light tabs-energized">
+<ion-tabs class="tabs-icon-top tabs-color-active-light tabs-energized" ng-controller="ListCtrl">
 
     <!-- Add Task Tab -->
     <ion-tab title="Add Task" icon-off="ion-plus" icon-on="ion-plus" href="#/tab/add">
@@ -11,7 +11,7 @@ navigation history that also transitions its views in and out.
     </ion-tab>
 
     <!-- Task List Tab -->
-    <ion-tab title="Task List" badge="3" badge-style="badge-assertive" icon-off="ion-ios-list-outline" icon-on="ion-ios-list" href="#/tab/list">
+    <ion-tab title="Task List" badge="tasks.length" badge-style="badge-assertive" icon-off="ion-ios-list-outline" icon-on="ion-ios-list" href="#/tab/list">
       <ion-nav-view name="tab-list"></ion-nav-view>
     </ion-tab>
 

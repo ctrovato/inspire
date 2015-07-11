@@ -5,18 +5,19 @@
 
 			<h1 class="currentTaskTitle">{{task.title}}</h1>
 
-			<h3>Expires on:</h3>
-
-			<h2></h2>
-
-
-<!-- 
-			<h2 class="clockDisplay">00:12:00</h2>
+			
+			<div class="hideDisplay" ng-show = "task.status == 'active'">
+			<h3>Expires in:</h3>
+			<h2 class="clockDisplay">{{differenceDays}}:{{differenceHours}}:{{differenceMinutes}}</h2>
 			<ul class="timeLables">
-				<li>Hrs.</li>
-				<li>Min.</li>
-				<li>Sec.</li>
-			</ul> -->
+				<li>Days</li>
+				<li>Hours</li>
+				<li>Minutes</li>
+			</ul>
+			</div> <!-- hideDisplay -->
+			<div class="hideDsiplay" ng-show = "task.status == 'Expired'">
+				<h2 class="expired">Expired</h2>	
+			</div>
 			</br></br>
 			<button class="button button-block  button-balanced" type="submit" ng-click="completeTask(task)">Complete Task</button> 
 		</div>

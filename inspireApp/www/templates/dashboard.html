@@ -3,14 +3,19 @@
 
 	<img  ng-class="facebookUser ?  'profileImg' : 'hideImage'"  src="{{facebookUser.facebook.cachedUserProfile.picture.data.url }}"  alt="profilePic">
 	<h3 class="currentUser">Hello, {{currentUser.name || facebookUser.facebook.displayName}}!</h3>
-
 <!-- <div id="dashboardStyling"> -->
 	<div class="button-bar">
 		<a class="button button-clear icon2 ion-plus button-energized" href="#/tab/add"> Add Task</a>
 		<a class="button button-clear icon2 ion-ios-list-outline button-energized" href="#/tab/list"> Task List</a>
 	</div>
 		</br>
-			<h3 class="currentTask">Current Task: {{task.title}}</h3>
+			<h3 class="currentTask">{{task[0].title}}</h3>
+			<h2 class="clockDisplay">{{differenceDays}}:{{differenceHours}}:{{differenceMinutes}}</h2>
+			<ul class="timeLables">
+				<li>Days</li>
+				<li>Hours</li>
+				<li>Minutes</li>
+			</ul>
 		</br>
 	<div class="button-bar">
 		<a class="button button-clear icon2 ion-ribbon-b button-energized" href="#/tab/badges" > Badges</a>

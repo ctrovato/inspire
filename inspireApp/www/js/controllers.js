@@ -179,20 +179,11 @@ var url = 'https://appinspire.firebaseio.com/'
 
 
 
-// ============ Add Tasks Controller ===========
-// =============================================
-.controller('AddCtrl', function($scope, $rootScope, $stateParams, $location, $firebaseObject, $ionicPopup, $firebaseArray, $firebaseAuth) {
+// ============ Add Tasks Controller =========================================================
+// ===========================================================================================
+// ===========================================================================================
 
-		console.log(new Date(1436824800000 - 1436566709350));
-		var difference = 1436824800000 - new Date().getTime()
-		var minutes = 1000 * 60
-		var hours = minutes * 60
-		var days = hours * 24
-		var differenceDays = Math.floor(difference/days )
-		var differenceHours =  Math.floor((difference-(differenceDays*days))/hours)
-		console.log('days:', differenceDays );
-		console.log('hours:', differenceHours)
-		console.log('minutes', Math.floor((difference- differenceDays*days - differenceHours*hours)/minutes))
+.controller('AddCtrl', function($scope, $rootScope, $stateParams, $location, $firebaseObject, $ionicPopup, $firebaseArray, $firebaseAuth) {
 
 
 		var url = 'https://appinspire.firebaseio.com/'
@@ -292,24 +283,34 @@ var url = 'https://appinspire.firebaseio.com/'
 				}
 			});
 
-		$scope.addTask = function(task, date){
-			console.log('DATE:', date)
-			
-			
 
+		$scope.addTask = function(task, date){
+			
+			// Expiration Coversion: converted saveTime + saveDate into unix string timeStamp
 			var saveDate = Date.parse(date);
 			var saveTime = ($scope.time)*1000;
-
 			var timeStamp = saveDate + saveTime;
 
+			// Countdown Conversion 
+			// console.log(new Date(timeStamp - 1436566709350));
+			var difference = timeStamp - new Date().getTime()
+			var minutes = 1000 * 60
+			var hours = minutes * 60
+			var days = hours * 24
+			var differenceDays = Math.floor(difference/days )
+			var differenceHours =  Math.floor((difference-(differenceDays*days))/hours)
+			var differenceMinutes = Math.floor((difference- differenceDays*days - differenceHours*hours)/minutes)
 
+			$scope.differenceDays = differenceDays;
+
+			console.log('days:', $scope.differenceDays );
+			console.log('hours:', differenceHours);
+			console.log('minutes', Math.floor((difference- differenceDays*days - differenceHours*hours)/minutes));
 
 			// var saveDate = new Date(date.getFullYear(), date.getMonth(), date.getDay(), )
 
-
-			console.log("Title: ", task.title, "Date: ", saveDate, "Time: ", saveTime); //logging $scope.tasks
-			console.log($scope.time);
-
+			console.log("Title: ", task.title, "Expiration: ", timeStamp); //logging $scope.tasks
+	
 			// var currentTime = Math.round(new Date().getTime()/1000.0);
 			// console.log(currentTime);
 
@@ -322,14 +323,15 @@ var url = 'https://appinspire.firebaseio.com/'
 				title: task.title,
 				dateFirebase: Firebase.ServerValue.TIMESTAMP,
 				expiration: timeStamp,
-				statusIncomplete: "incommplete",
-				statusComplete: "complete"
+				status: "active",
 			}).then(function(){
 				// $scope.task = {};
 				task.title = '';
 			})
 
 	}; //addTask
+
+
 
 	})
 
@@ -339,7 +341,7 @@ var url = 'https://appinspire.firebaseio.com/'
 .controller('ListCtrl', function($scope, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
 
 	var url = 'https://appinspire.firebaseio.com/';
-	var ref = new Firebase(url);  
+	var ref = new Firebase(url); 
 
     	$scope.authObj = $firebaseAuth(ref);
  	
@@ -347,19 +349,49 @@ var url = 'https://appinspire.firebaseio.com/'
 			if (authData) {
 				var userRef =  new Firebase( url + "users/" + authData.uid);
 				var taskRef =  new Firebase( url + "users/" + authData.uid + "/tasks/");
+
 				$scope.user = $firebaseObject(userRef);
 				$scope.tasks = $firebaseArray(taskRef);
+				$scope.tasks.$loaded().then(function(data){
+				$scope.task = data;
+
+					angular.forEach($scope.tasks, function(value, key) {
+
+					var currentTime = new Date().getTime();
+					var currentTime = new Date().getTime();
+					var timeStamp =  value.expiration;
+
+					// console.log(currentTime);
+						
+						if( value.status === "active"){
+							console.log("Working");
+							console.log(currentTime, timeStamp);
+
+							if( currentTime > timeStamp){
+								$scope.tasks[key].status = "Expired";
+								$scope.task.$save(key);
+							console.log("Expired");
+						}}else{
+							console.log("Active");
+						}
+					})
+
+					}).catch(function(error){
+						console.log(error);
+					})
+
 				// console.log("logged in:", $scope.user); //logging $rootScope.currentUsers
 
 			} else {
 				$location.path("/splashPage");
 			}
 		});
+
 })
 
 // ============ View Task Controller ===========
 // =============================================
-.controller('ViewTaskCtrl', function($scope, $stateParams, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
+.controller('ViewTaskCtrl', function($scope, $interval, $stateParams, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
 
 	var url = 'https://appinspire.firebaseio.com/';
 	var ref = new Firebase(url);  
@@ -374,8 +406,24 @@ var url = 'https://appinspire.firebaseio.com/'
 				$scope.task = $firebaseObject(taskRef);
 					$scope.task.$loaded().then(function(data){
 						$scope.task = data;
-						var countdownTime = $scope.task.deadlineTime;
-						var currentTime = 0;
+
+						function updateTime(){
+
+							var timeStamp =  $scope.task.expiration;
+							var difference = timeStamp - new Date().getTime()
+							var minutes = 1000 * 60
+							var hours = minutes * 60
+							var days = hours * 24
+							var differenceDays = Math.floor(difference/days )
+							var differenceHours =  Math.floor((difference-(differenceDays*days))/hours)
+							var differenceMinutes = Math.floor((difference- differenceDays*days - differenceHours*hours)/minutes)
+
+							$scope.differenceDays = differenceDays;
+							$scope.differenceHours = differenceHours;
+							$scope.differenceMinutes = differenceMinutes;
+						}
+
+						countTime = $interval(updateTime, 500);
 
 					}).catch(function(error){
 						console.log(error);
@@ -388,6 +436,57 @@ var url = 'https://appinspire.firebaseio.com/'
 		});
 })
 
+
+
+
+// ============ Dashboard Controller ===========
+// =============================================
+.controller('DashboardCtrl', function($scope, $interval, $stateParams, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
+
+	var url = 'https://appinspire.firebaseio.com/';
+	var ref = new Firebase(url);  
+
+    	$scope.authObj = $firebaseAuth(ref);
+ 	
+		$scope.authObj.$onAuth(function(authData) {
+			if (authData) {
+				var userRef = new Firebase( url + "users/" + authData.uid);
+				var taskRef = new Firebase( url + "users/" + authData.uid + "/tasks/" );
+				$scope.user = $firebaseObject(userRef);
+				$scope.task = $firebaseArray(taskRef);
+					$scope.task.$loaded().then(function(data){
+						$scope.task = data;
+
+						console.log($scope.task[0]);
+
+						function updateTime(){
+
+							var timeStamp =  $scope.task[0].expiration;
+							var difference = timeStamp - new Date().getTime()
+							var minutes = 1000 * 60
+							var hours = minutes * 60
+							var days = hours * 24
+							var differenceDays = Math.floor(difference/days )
+							var differenceHours =  Math.floor((difference-(differenceDays*days))/hours)
+							var differenceMinutes = Math.floor((difference- differenceDays*days - differenceHours*hours)/minutes)
+
+							$scope.differenceDays = differenceDays;
+							$scope.differenceHours = differenceHours;
+							$scope.differenceMinutes = differenceMinutes;
+						}
+
+						countTime = $interval(updateTime, 500);
+
+					}).catch(function(error){
+						console.log(error);
+					})
+				// console.log("logged in:", $scope.user); //logging $rootScope.currentUsers
+
+			} else {
+				$location.path("/splashPage");
+			}
+		});
+})
 // ============ Badges Controller ===========
 // =============================================
 .controller('BadgesCtrl', function($scope) {

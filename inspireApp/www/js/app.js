@@ -47,7 +47,8 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
 
   .state('splashpage', {
     url: '/splashpage',
-    templateUrl: 'templates/splashPage.html'
+    templateUrl: 'templates/splashPage.html',
+    controller: 'MainCtrl'
 
   })
 

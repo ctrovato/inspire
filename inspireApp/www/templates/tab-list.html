@@ -15,8 +15,14 @@
 
 			<ion-list>
 				<ion-item ng-repeat="task in tasks | filter:search:strict">
-					<a href="#/users/{{currentUser.$id}}/tasks/{{task.$id}}">{{task.title}}</a>
-
+				<div class="hideDisplay" ng-show = "task.status == 'active'">
+					<a href="#/users/{{currentUser.$id}}/tasks/{{task.$id}}" class="results">{{task.title}}</a>
+					<h4 class="activeTask">Active</h4>
+				</div>
+				<div class="hideDisplay" ng-show = "task.status == 'Expired'">
+					<a href="#/users/{{currentUser.$id}}/tasks/{{task.$id}}" class="results">{{task.title}}</a>
+					<h4 class="expiredTask">Expired</h4>
+				</div>
 					<ion-option-button class="button-energized" ng-click="completeTask(task)">
 						<i class="icon ion-checkmark"></i>
 					</ion-option-button>

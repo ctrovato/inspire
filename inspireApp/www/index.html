@@ -37,18 +37,18 @@
     <ion-side-menus>
     <ion-side-menu side="left">
         <ion-list>
-            <ion-item ><a ui-sref="dashboard">Dashboard</a></ion-item>
+            <ion-item><a ui-sref="dashboard">Dashboard</a></ion-item>
         </ion-list>
         <ion-list>
             <ion-item ><a ui-sref="profile">Profile</a></ion-item>
         </ion-list>
         <ion-list>
 <!--    <ion-item ng-click="authObj.$unauth()">Logout</ion-item> -->
-            <ion-item ng-hide="currentUser"><a ui-sref="login" >Login</a></ion-item>
+            <ion-item ng-hide="currentUser"><a ui-sref="login">Login</a></ion-item>
             <ion-item ng-show="currentUser" ng-click="authObj.$unauth()"><a ui-sref="#/">Log out</a></ion-item>
         </ion-list>   
     </ion-side-menu>
-    <ion-side-menu-content>
+    <ion-side-menu-content class="has-header spot-black">
 
     <ion-header-bar class="bar-energized">
         <div class="buttons">

@@ -1,4 +1,5 @@
 /* Empty. Add your own CSS if you like */
+
 p {
 	font-size: 1.5em;
 	text-align: center;
@@ -11,11 +12,27 @@ p {
  	text-align: center;
  	font-family: 'Droid Sans', sans-serif;
  }
+ h4{
+ 	text-align: right;
+ 	width: 60px;
+ 	font-size: 1.2em;
+ 	float: right;
+
+ }
+.activeTask{
+	color:#4cd320;
+ }
+
+ .expiredTask{
+ 	color: #FF6666;
+ }
+
  .clockDisplay{
 	font-size: 4em;
  	font-family: 'Michroma', sans-serif;
  	text-align: center;
- 	text-shadow: 1px 1px  #fff;
+ 	color: #fff;
+/* 	text-shadow: 1px 1px  #fff;*/
  }
 
  .timeLables li{
@@ -77,6 +94,12 @@ p {
 	padding: 3px 0px 3px 0px;
 	font-family: 'Droid Sans', sans-serif;
 }
+.results{
+	font-family: 'Droid Sans', sans-serif;
+	color: #f29111;
+	text-decoration: none;
+	font-size: 1.3em;
+}
 .bannerStyle{
 	margin-bottom: 5px;
 }
@@ -95,7 +118,9 @@ p {
 
 .addTaskInput{
 	margin-top: 50px;
+	color: #fff;
 }
+
 
 .taskStyle{
 	margin-top: 20px;
@@ -108,6 +133,7 @@ p {
     width: 50px;
     height: 50px;
 }
+
 
 .hideText{
 	display: none;

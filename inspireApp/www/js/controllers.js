@@ -3,7 +3,7 @@ angular.module('starter.controllers', ['firebase'])
 
 // ================= Main  Controller =============
 // ================================================
-.controller('MainCtrl', function($scope, $firebaseAuth, $firebaseObject, $ionicSideMenuDelegate) {
+.controller('MainCtrl', function($scope, $location, $firebaseAuth, $firebaseObject, $ionicSideMenuDelegate) {
 	$scope.toggleLeft = function(){
 		$ionicSideMenuDelegate.toggleLeft()
 	}
@@ -15,6 +15,8 @@ angular.module('starter.controllers', ['firebase'])
 		$scope.authObj.$onAuth(function(authData) {
 			if (authData) {
 				var userRef =  new Firebase(url + "users/" + authData.uid);
+
+				$location.path('/dashboard');
 
 				$scope.currentUser = $firebaseObject(userRef);
 
@@ -59,7 +61,6 @@ var url = 'https://appinspire.firebaseio.com/'
 
 			} else {
 				console.log("Logged out");   //logging logged out
-
 			}
 		});
 
@@ -94,7 +95,8 @@ var url = 'https://appinspire.firebaseio.com/'
 				.set({
 					uid: $scope.authData.uid,
 					name: $scope.user.name,
-					email: $scope.user.email
+					email: $scope.user.email,
+					points: 0
 				});
 
 				$scope.currentUser = authData
@@ -310,7 +312,8 @@ var url = 'https://appinspire.firebaseio.com/'
 			// var saveDate = new Date(date.getFullYear(), date.getMonth(), date.getDay(), )
 
 			console.log("Title: ", task.title, "Expiration: ", timeStamp); //logging $scope.tasks
-	
+				
+
 			// var currentTime = Math.round(new Date().getTime()/1000.0);
 			// console.log(currentTime);
 
@@ -326,11 +329,14 @@ var url = 'https://appinspire.firebaseio.com/'
 				status: "active",
 			}).then(function(){
 				// $scope.task = {};
+				$location.path("/tab/list");
 				task.title = '';
 			})
 
-	}; //addTask
 
+						// the currentUser will recieve points for creating and posting a message
+
+	}; //addTask
 
 
 	})
@@ -391,7 +397,7 @@ var url = 'https://appinspire.firebaseio.com/'
 
 // ============ View Task Controller ===========
 // =============================================
-.controller('ViewTaskCtrl', function($scope, $interval, $stateParams, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
+.controller('ViewTaskCtrl', function($scope, $location, $interval, $stateParams, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
 
 	var url = 'https://appinspire.firebaseio.com/';
 	var ref = new Firebase(url);  
@@ -404,8 +410,8 @@ var url = 'https://appinspire.firebaseio.com/'
 				var taskRef = new Firebase( url + "users/" + authData.uid + "/tasks/" + $stateParams.task);
 				$scope.user = $firebaseObject(userRef);
 				$scope.task = $firebaseObject(taskRef);
-					$scope.task.$loaded().then(function(data){
-						$scope.task = data;
+				$scope.task.$loaded().then(function(data){
+				$scope.task = data;
 
 						function updateTime(){
 
@@ -433,6 +439,24 @@ var url = 'https://appinspire.firebaseio.com/'
 			} else {
 				$location.path("/splashPage");
 			}
+
+
+	$scope.completeTask = function(task) { 
+
+		$scope.task.$remove().then(function(ref) {
+			$location.path("/tab/list");
+
+			console.log($scope.user);
+			$scope.user.points += 150;
+			$scope.user.$save();
+		}, function(error) {
+		  console.log("Error:", error);
+		});
+
+		console.log("removed"); 
+		
+	}; //completeTask
+
 		});
 })
 

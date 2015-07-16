@@ -15,11 +15,12 @@
 				<li>Minutes</li>
 			</ul>
 			</div> <!-- hideDisplay -->
-			<div class="hideDsiplay" ng-show = "task.status == 'Expired'">
+			<div class="hideDisplay" ng-show = "task.status == 'Expired'">
 				<h2 class="expired">Expired</h2>	
-			</div>
 			</br></br>
-			<button class="button button-block  button-balanced" type="submit" ng-click="completeTask(task)">Complete Task</button> 
+			</div><!-- hideDisplay -->
+			<button ng-hide= "task.status == 'Expired'" class="button button-block button-balanced" ng-click="completeTask(task)">Complete Task</button> 
+
 		</div>
 
 	</ion-content>

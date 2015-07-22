@@ -37,14 +37,14 @@
     <ion-side-menus>
     <ion-side-menu side="left">
         <ion-list>
-            <ion-item><a ui-sref="dashboard">Dashboard</a></ion-item>
+            <ion-item><a menu-close ui-sref="dashboard">Dashboard</a></ion-item>
         </ion-list>
         <ion-list>
-            <ion-item ><a ui-sref="profile">Profile</a></ion-item>
+            <ion-item ><a menu-close ui-sref="profile">Profile</a></ion-item>
         </ion-list>
         <ion-list>
 <!--    <ion-item ng-click="authObj.$unauth()">Logout</ion-item> -->
-            <ion-item ng-hide="currentUser"><a ui-sref="login">Login</a></ion-item>
+            <ion-item ng-hide="currentUser"><a menu-close ui-sref="login">Login</a></ion-item>
             <ion-item ng-show="currentUser" ng-click="authObj.$unauth()"><a ui-sref="#/">Log out</a></ion-item>
         </ion-list>   
     </ion-side-menu>

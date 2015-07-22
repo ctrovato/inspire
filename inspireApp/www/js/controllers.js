@@ -376,6 +376,10 @@ var url = 'https://appinspire.firebaseio.com/'
 							if( currentTime > timeStamp){
 								$scope.tasks[key].status = "Expired";
 								$scope.task.$save(key);
+
+								// $scope.user.points -= 100;
+								// $scope.user.$save();
+
 							console.log("Expired");
 						}}else{
 							console.log("Active");
@@ -453,9 +457,22 @@ var url = 'https://appinspire.firebaseio.com/'
 		  console.log("Error:", error);
 		});
 
-		console.log("removed"); 
+		console.log("Completed"); 
 		
 	}; //completeTask
+
+
+
+	$scope.deleteTask = function(task) { 
+
+		$scope.task.$remove().then(function(ref) {
+			$location.path("/tab/list");
+
+		}, function(error) {
+		  console.log("Error:", error);
+		});
+		
+	}; //deletedTask
 
 		});
 })

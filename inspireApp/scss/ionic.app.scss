@@ -4,7 +4,6 @@ in ionic's _variables.scss file.
 
 For example, you might change some of the default colors:
 
-$inspireOrange:					  #e8a34f !default;
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #387ef5 !default;
@@ -15,6 +14,8 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+
+
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;

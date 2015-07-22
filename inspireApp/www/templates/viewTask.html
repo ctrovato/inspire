@@ -1,28 +1,29 @@
-
 <ion-view view-title="View Task">
 	<ion-content class="bkground2 padding">
 		<div class="taskStyle">
 
-			<h1 class="currentTaskTitle">{{task.title}}</h1>
 
-			
 			<div class="hideDisplay" ng-show = "task.status == 'active'">
-			<h3>Expires in:</h3>
-			<h2 class="clockDisplay">{{differenceDays}}:{{differenceHours}}:{{differenceMinutes}}</h2>
-			<ul class="timeLables">
-				<li>Days</li>
-				<li>Hours</li>
-				<li>Minutes</li>
-			</ul>
+				<h1 class="currentTaskTitle">{{task.title}}</h1>
+				<h3>Expires in:</h3>
+				<h2 class="clockDisplay">{{differenceDays}}:{{differenceHours}}:{{differenceMinutes}}</h2>
+				<ul class="timeLables">
+					<li>Days</li>
+					<li>Hours</li>
+					<li>Minutes</li>
+				</ul>
 			</div> <!-- hideDisplay -->
+
 			<div class="hideDisplay" ng-show = "task.status == 'Expired'">
-				<h2 class="expired">Expired</h2>	
+				<h1 class="currentTaskTitleExpired">{{task.title}}</h1>
+				<img class="expirationIcon" ng-src="img/expirationSkull1.svg"  style="width: 300px; height: 300px; display:block; margin: auto;">
+				<button ng-hide= "task.status == 'active'" class="button button-block button-assertive brandingRemove" ng-click="deleteTask(task)">Remove Expired Task</button> 
 			</br></br>
 			</div><!-- hideDisplay -->
-			<button ng-hide= "task.status == 'Expired'" class="button button-block button-balanced" ng-click="completeTask(task)">Complete Task</button> 
+			</br></br>
+			<button ng-hide= "task.status == 'Expired'" class="button button-block button-balanced brandingComplete" ng-click="completeTask(task)">Complete Task</button> 
 
 		</div>
-
 	</ion-content>
 
 </ion-view>

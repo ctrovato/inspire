@@ -1,5 +1,25 @@
 /* Empty. Add your own CSS if you like */
 
+.bar-energized, .tabs-energized>.tabs , .branding{
+	background-color: #DBAF00 !important; 
+	border-style: none;
+
+}
+
+.brandingComplete{
+	background-color: #69B061 !important; 
+	border-style: none;
+}
+
+.dashLinkStyle{
+	color: #DBAF00 !important;	
+}
+
+.brandingRemove{
+	background-color: #DD5252 !important; 
+	border-style: none;
+}
+
 p {
 	font-size: 1.5em;
 	text-align: center;
@@ -12,19 +32,20 @@ p {
  	text-align: center;
  	font-family: 'Droid Sans', sans-serif;
  }
+
  h4{
  	text-align: right;
  	width: 60px;
- 	font-size: 1.2em;
+ 	font-size: 3.5em;
  	float: right;
 
  }
 .activeTask{
-	color:#4cd320;
+	color:#75C46C;
  }
 
  .expiredTask{
- 	color: #FF6666;
+ 	color: #ef473a
  }
 
  .clockDisplay{
@@ -43,20 +64,39 @@ p {
  	color: #fff;
  }
  .expired{
- 	color: #FF6666;
- 	font-size: 3em;
+ 	color: #ef473a;
+ 	font-size: 2.5em;
  	text-align: center;
 	font-family: 'Michroma', sans-serif;
  }
 
 .bkground{
-	background: #565656
+	background: #4F4F4F
 }
 .bkground2{
 	background: url("../img/inspireBackground.jpg");
 }
 #userBar{
 	margin-top: none;
+}
+
+.listStyling{
+	background-color: transparent;
+}
+
+.signupStyle{
+	margin: 20px 0px 20px 0px;
+	color: #fff;
+	font-size: 1.2em;
+}
+
+.selectionStyle{
+	height:35px;
+	width: 100%;
+	margin: 5px 0px 20px 0px;
+	border-radius: 0px;
+	border: 0;
+	background-color: #ffc900;
 }
 
 .userInfo{
@@ -81,6 +121,29 @@ p {
 	padding-top: 10px;
 }
 
+.points{
+	text-align: center;
+	color: #fff;
+	font-size: 1.5em;
+	margin: 2px 2px 2px 2px;
+ 	font-family: 'Michroma', sans-serif;
+}
+
+.expirationIcon{
+	margin:  0 auto;
+	text-align: center;
+}
+
+.pointsStyling{
+	text-align: center;
+	font-size: 1.4em;
+	color:#DBAF00;
+	margin: 0px 2px 2px 2px;
+	font-family: 'Droid Sans', sans-serif;
+
+}
+
+
 .button{
 	color: #545454;
 	font-weight: 700;
@@ -96,7 +159,7 @@ p {
 }
 .results{
 	font-family: 'Droid Sans', sans-serif;
-	color: #f29111;
+	color: #DBAF00;
 	text-decoration: none;
 	font-size: 1.3em;
 }
@@ -105,6 +168,19 @@ p {
 }
 .currentTaskTitle{
 	background: url("../img/emptyBanner.svg") no-repeat;
+	background-size: contain;
+	height: 90px;
+	text-align: center;
+	width: 355px;
+	font-family: 'Century Gothic', sans-serif;
+	font-weight: bold;
+	padding: 12px;
+	color: #fff;
+	font-size: 1.4em;
+}
+
+.currentTaskTitleExpired{
+	background: url("../img/emptyBannerExpired.svg") no-repeat;
 	background-size: contain;
 	height: 90px;
 	text-align: center;
@@ -143,7 +219,7 @@ p {
 	display: none;
 }
 .icon2{
-	font-size: 2em;
+	font-size: 1.6em;
 }
 .currentUser{
 	width: 250px;

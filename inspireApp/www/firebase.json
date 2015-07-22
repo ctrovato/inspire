@@ -1,6 +1,6 @@
 {
   "firebase": "appinspire",
-  "public": "WWW/",
+  "public": ".",
   "ignore": [
     "firebase.json",
     "**/.*",

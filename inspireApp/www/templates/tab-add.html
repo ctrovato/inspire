@@ -14,27 +14,28 @@
 					<input class="addTaskInput" type="text" ng-model="task.title" placeholder="Add a Task"
 					>
 				</label>
-
-				</br></br>
-
+					</br>
 				<p>Expiration:</p>
-
-<!-- 				<input type="number" min="1" max="7" style="width: 100%" ng-model="task.days"/>
- -->			</div>
-
+				
+				</div>
 					<!-- Setting the Deadline with the Datepicker -->
 					<ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">
-					    <button class="button button-block button-energized">{{ currentDate | date:'dd - MMMM - yyyy' }}</button>
+					    <button class="button button-block button-energized branding">{{ currentDate | date:'dd - MMMM - yyyy' }}</button>
 					</ionic-datepicker>
 				</br>
 					<!-- Setting the Deadline with the Timepicker -->
 					<ionic-timepicker etime="slots.epochTime" format="slots.format" step="slots.step" callback="timePickerCallback">    
-						<button class="button button-block button-energized"> Set a Time </button>
+						<button class="button button-block button-energized branding"> Set a Time </button>
 					</ionic-timepicker>
 				</br>
+<!-- 				<select class="selectionStyle">
+						<option>Health</option>
+						<option>Leasure</option>
+						<option>Organization</option>
+						<option>Academic</option>							
+				</select> -->
 					<p class="addTask">Complete it by {{currentDate | date:'EEEE, MMMM d, y'}} at {{task.time}}</p>
-
-				<button class="button button-block  button-balanced" type="submit" ng-click="addTask(task, currentDate )">Start Task</button>  
+				<button class="button button-block  button-balanced brandingComplete" type="submit" ng-click="addTask(task, currentDate )">Start Task</button>  
 
 			</form>
 		</div>

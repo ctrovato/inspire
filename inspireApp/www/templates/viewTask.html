@@ -5,6 +5,8 @@
 
 			<div class="hideDisplay" ng-show = "task.status == 'active'">
 				<h1 class="currentTaskTitle">{{task.title}}</h1>
+
+				<p class="dateDisplay">{{currentDate | date:'EEEE, MMMM d, y'}} at {{task.time}}</p>
 				<h3>Expires in:</h3>
 				<h2 class="clockDisplay">{{differenceDays}}:{{differenceHours}}:{{differenceMinutes}}</h2>
 				<ul class="timeLables">

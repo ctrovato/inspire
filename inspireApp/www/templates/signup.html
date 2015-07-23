@@ -11,18 +11,18 @@
 	  	</br>
 		<label class="item item-input">
 			<i class="icon ion-person placeholder-icon"></i>
-			<input ng-model="user.name" type="text" placeholder="Enter Your Firstname">
+			<input ng-model="user.name" type="text" placeholder="Enter Your Firstname" ng-required="true">
 		</label>
 			<!-- Below is an error validation message using ng-show -->
 <!-- 			<p class="errorValidation" 
-			ng-show="myForm.firstname.$invalid && myForm.firstname.$touched"> 
+			ng-show="myForm.name.$invalid && myForm.name.$touched"> 
 			Must enter a first name.</p> -->
 			<br/>
 
 	  	<!-- Enter Email --> 
 		<label class="item item-input">
 			<i class="icon ion-at placeholder-icon"></i>
-			<input ng-model="user.email" type="text" placeholder="Enter Email Address">
+			<input ng-model="user.email" type="text" placeholder="Enter Email Address" ng-required="true">
 		</label>
 			<!-- Below is an error validation message using ng-show -->
 <!-- 			<p class="errorValidation" 
@@ -32,7 +32,7 @@
 		<!-- Enter Password --> 
 		<label class="item item-input">
 			<i class="icon ion-locked placeholder-icon"></i>
-			<input ng-model="user.password" type="password" placeholder="Enter Password">
+			<input ng-model="user.password" type="password" placeholder="Enter Password" ng-required="true">
 		</label>
 			<!-- Below is an error validation message using ng-show -->
 	<!-- 		<p class="errorValidation" 

@@ -375,10 +375,8 @@ var url = 'https://appinspire.firebaseio.com/'
 
 							if( currentTime > timeStamp){
 								$scope.tasks[key].status = "Expired";
+								$scope.user.points -= 100;
 								$scope.task.$save(key);
-
-								// $scope.user.points -= 100;
-								// $scope.user.$save();
 
 							console.log("Expired");
 						}}else{
@@ -448,7 +446,7 @@ var url = 'https://appinspire.firebaseio.com/'
 	$scope.completeTask = function(task) { 
 
 		$scope.task.$remove().then(function(ref) {
-			$location.path("/tab/list");
+			$location.path("/tab/badges");
 
 			console.log($scope.user);
 			$scope.user.points += 150;

@@ -21,12 +21,12 @@
 				</div>
 					<!-- Setting the Deadline with the Datepicker -->
 					<ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">
-					    <button class="button button-block button-energized branding">{{ currentDate | date:'dd - MMMM - yyyy' }}</button>
+					    <button class="button button-block button-energized brandingSelector">{{ currentDate | date:'dd - MMMM - yyyy' }}</button>
 					</ionic-datepicker>
 				</br>
 					<!-- Setting the Deadline with the Timepicker -->
 					<ionic-timepicker etime="slots.epochTime" format="slots.format" step="slots.step" callback="timePickerCallback">    
-						<button class="button button-block button-energized branding"> Set a Time </button>
+						<button class="button button-block button-energized brandingSelector"> Set a Time </button>
 					</ionic-timepicker>
 				</br>
 <!-- 				<select class="selectionStyle">

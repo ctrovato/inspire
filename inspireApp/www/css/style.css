@@ -1,18 +1,23 @@
 /* Empty. Add your own CSS if you like */
 
 .bar-energized, .tabs-energized>.tabs , .branding{
-	background-color: #DBAF00 !important; 
+	background-color: #00BF5A !important; 
 	border-style: none;
 
 }
 
 .brandingComplete{
-	background-color: #52C646 !important; 
+	background-color: #00BF5A !important; 
+	border-style: none;
+}
+
+.brandingSelector{
+	background-color: #808080!important; 
 	border-style: none;
 }
 
 .dashLinkStyle{
-	color: #DBAF00 !important;	
+	color: #00BF5A !important;	
 }
 
 .brandingRemove{
@@ -42,14 +47,14 @@ p {
 
  .sideMenuStyle{
 	background-color: #3A3A3A;
-	color: #DBAF00;
+	color: #00BF5A;
 	text-decoration: none;
 	font-family: 'Droid Sans', sans-serif;
  }
 
 .sideMenuLogo{
 	background-color: #4F4F4F;
-	background-image: url("../img/inspireBackground.svg");
+	background-image: url("../img/inspireBackground2.svg");
 
 }
 
@@ -87,7 +92,7 @@ p {
 	background: #4F4F4F;
 }
 .bkground2{
-	background: url("../img/inspireBackground2.svg");
+	background: url("../img/inspireDashboardBkground.svg");
 }
 #userBar{
 	margin-top: none;
@@ -156,7 +161,7 @@ p {
 .pointsStyling{
 	text-align: center;
 	font-size: 1.4em;
-	color:#DBAF00;
+	color:#00BF5A;
 	margin: 0px 2px 2px 2px;
 	font-family: 'Droid Sans', sans-serif;
 
@@ -194,7 +199,7 @@ p {
 	font-family: 'Century Gothic', sans-serif;
 	font-weight: bold;
 	padding: 12px;
-	color: #fff;
+	color: #343434;
 	font-size: 1.4em;
 }
 

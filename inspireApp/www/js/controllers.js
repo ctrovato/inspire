@@ -428,6 +428,7 @@ var url = 'https://appinspire.firebaseio.com/'
 							$scope.differenceDays = differenceDays;
 							$scope.differenceHours = differenceHours;
 							$scope.differenceMinutes = differenceMinutes;
+
 						}
 
 						countTime = $interval(updateTime, 500);
@@ -440,6 +441,9 @@ var url = 'https://appinspire.firebaseio.com/'
 			} else {
 				$location.path("/splashPage");
 			}
+
+
+
 
 
 	$scope.completeTask = function(task) { 

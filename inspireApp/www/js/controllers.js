@@ -187,7 +187,6 @@ var url = 'https://appinspire.firebaseio.com/'
 
 .controller('AddCtrl', function($scope, $rootScope, $stateParams, $location, $firebaseObject, $ionicPopup, $firebaseArray, $firebaseAuth) {
 
-
 		var url = 'https://appinspire.firebaseio.com/'
 		var ref = new Firebase(url); 
 

@@ -7,7 +7,7 @@
 }
 
 .brandingComplete{
-	background-color: #69B061 !important; 
+	background-color: #52C646 !important; 
 	border-style: none;
 }
 
@@ -38,8 +38,21 @@ p {
  	width: 60px;
  	font-size: 3.5em;
  	float: right;
-
  }
+
+ .sideMenuStyle{
+	background-color: #3A3A3A;
+	color: #DBAF00;
+	text-decoration: none;
+	font-family: 'Droid Sans', sans-serif;
+ }
+
+.sideMenuLogo{
+	background-color: #4F4F4F;
+	background-image: url("../img/inspireBackground.svg");
+
+}
+
 .activeTask{
 	color:#75C46C;
  }
@@ -71,10 +84,10 @@ p {
  }
 
 .bkground{
-	background: #4F4F4F
+	background: #4F4F4F;
 }
 .bkground2{
-	background: url("../img/inspireBackground.jpg");
+	background: url("../img/inspireBackground2.svg");
 }
 #userBar{
 	margin-top: none;
@@ -109,6 +122,7 @@ p {
  	text-align: center;
  	font-family: 'Droid Sans', sans-serif;
 }
+
 
 #dashboardStyling{
 	margin-top: 60px;

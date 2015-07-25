@@ -7,21 +7,16 @@
 
 			<img src="img/addBanner.svg" class="bannerStyle" alt="Add Task Banner" style="width: 100%; height: auto;">
 			<div class="taskStyle">
-
-			<p class="errorValidation" 
-			ng-show="authError"> 
-			{{authError}}</p>
 			
 			<!-- Adding Tasks --> 
 				<label class="item item-input">
 					<i class="icon ion-plus-round placeholder-icon"></i>
-					<input class="addTaskInput" type="text" ng-model="task.title" placeholder="Add a Task" ng-required="true">
-
-			<!-- Below is an error validation message using ng-show -->
+					<input class="addTaskInput" type="text" ng-model="task.title" name="title" placeholder="Add a Task" ng-required="true">
+				</label>
+				<!-- Below is an error validation message using ng-show -->
 					<p class="errorValidation" 
 					ng-show="myForm.title.$invalid && myForm.title.$touched"> 
 					Must enter title.</p>
-				</label>
 				</br>
 				<div class="list">
 			        <div class="item item-input item-select">

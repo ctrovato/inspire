@@ -1,4 +1,4 @@
-.color_blue{color:#e8a34f!important}.bg_color_blue{background-color:#e8a34f}.date_col:hover{background-color:rgba(244,206,44,.5);cursor:pointer}.date_col:active,.date_selected{background-color:rgba(242,145,17,1)}.date_col:active{cursor:pointer}.no_padding{padding:0}.date_cell{padding:5px}.error_msg{color:#535353!important;font-size:12px}.today{background-color:rgba(244,206,44,1)}.pointer_events_none{pointer-events:none!important;color:#B9823F}
+.color_blue{color:#e8a34f!important}.bg_color_blue{background-color:#e8a34f}.date_col:hover{background-color:rgba(244,206,44,.5);cursor:pointer}.date_col:active,.date_selected{background-color:#DBAF00;}.date_col:active{cursor:pointer}.no_padding{padding:0}.date_cell{padding:5px}.error_msg{color:#535353!important;font-size:12px}.today{background-color:#00BF5A; color: #fff;}.pointer_events_none{pointer-events:none!important;color:#B9823F}
 
 
 

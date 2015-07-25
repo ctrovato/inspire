@@ -30,12 +30,12 @@ p {
 	text-align: center;
 	color: #fff;
 	padding: 3px 0px 3px 0px;
-	font-family: 'Droid Sans', sans-serif;
+ 	font-family: 'Century Gothic', sans-serif;
 }
  h3{
  	color: #fff;
  	text-align: center;
- 	font-family: 'Droid Sans', sans-serif;
+ 	font-family: 'Century Gothic', sans-serif;
  }
 
  h4{
@@ -43,27 +43,56 @@ p {
  	width: 60px;
  	font-size: 3.5em;
  	float: right;
+ 	font-family: 'Century Gothic', sans-serif;
  }
 
  .sideMenuStyle{
 	background-color: #3A3A3A;
 	color: #00BF5A;
 	text-decoration: none;
-	font-family: 'Droid Sans', sans-serif;
+	font-family: 'Century Gothic', sans-serif;
  }
+
+ .categoryStyle{
+ 	color: #00BF5A ;
+	font-family: 'Century Gothic', sans-serif;
+	font-size: 1em;
+ }
+
 
 .sideMenuLogo{
 	background-color: #4F4F4F;
 	background-image: url("../img/inspireBackground2.svg");
-
 }
 
+.input-label{
+	color: #888888;
+	font-family: 'Century Gothic', sans-serif;
+	font-size: .8em;
+}
+
+
+.popup-buttons button{
+	font-size: 1.1em;
+	font-family: 'Century Gothic', sans-serif;
+}
+.popup-buttons .button.button-positive{
+	background-color:#00BF5A;
+	border: none; 
+}
+
+.popup-head h3{
+	font-family: 'Century Gothic', sans-serif;
+	color:#00BF5A;
+}
+
+
 .activeTask{
-	color:#75C46C;
+	color:#00BF5A;
  }
 
  .expiredTask{
- 	color: #ef473a
+ 	color: #ef473a;
  }
 
  .clockDisplay{
@@ -76,8 +105,8 @@ p {
 
  .timeLables li{
  	display: inline;
- 	margin-left: 60px;
- 	font-size: 1em;
+ 	margin-left: 52px;
+ 	font-size: 1.1em;
  	text-align: center;
  	color: #fff;
  }
@@ -125,7 +154,7 @@ p {
 .userInfo{
 	color: #fff;
  	text-align: center;
- 	font-family: 'Droid Sans', sans-serif;
+	font-family: 'Century Gothic', sans-serif;
 }
 
 
@@ -163,7 +192,7 @@ p {
 	font-size: 1.4em;
 	color:#00BF5A;
 	margin: 0px 2px 2px 2px;
-	font-family: 'Droid Sans', sans-serif;
+	font-family: 'Century Gothic', sans-serif;
 
 }
 
@@ -172,17 +201,17 @@ p {
 	color: #545454;
 	font-weight: 700;
 	font-size: 1.4em;
-	font-family: 'Droid Sans', sans-serif;
+	font-family: 'Century Gothic', sans-serif;
 }
 .addTask{
 	font-size: 1.4em;
 	text-align: center;
 	color:#FFF;
 	padding: 3px 0px 3px 0px;
-	font-family: 'Droid Sans', sans-serif;
+	font-family: 'Century Gothic', sans-serif;
 }
 .results{
-	font-family: 'Droid Sans', sans-serif;
+	font-family: 'Century Gothic', sans-serif;
 	color: #DBAF00;
 	text-decoration: none;
 	font-size: 1.3em;
@@ -197,10 +226,9 @@ p {
 	text-align: center;
 	width: 355px;
 	font-family: 'Century Gothic', sans-serif;
-	font-weight: bold;
 	padding: 12px;
-	color: #343434;
-	font-size: 1.4em;
+	color: #fff;
+	font-size: 1.5em;
 }
 
 .currentTaskTitleExpired{

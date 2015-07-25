@@ -36,7 +36,7 @@
     -->
     <ion-side-menus class="sideMenuStyle">
         <ion-side-menu side="left" class="sideMenuLogo">
-            <ion-list>
+            <ion-list >
                 <ion-item class="sideMenuStyle"><a style="text-decoration: none; color: #00BF5A; font-size: 1.2em;" menu-close ui-sref="dashboard" >Dashboard</a></ion-item>
             </ion-list>
             <ion-list>
@@ -45,7 +45,7 @@
             <ion-list>
     <!--    <ion-item ng-click="authObj.$unauth()">Logout</ion-item> -->
                 <ion-item class="sideMenuStyle" ng-hide="currentUser"><a style="text-decoration: none; font-size: 1.2em; color: #00BF5A;" menu-close ui-sref="login">Login</a></ion-item>
-                <ion-item class="sideMenuStyle" ng-show="currentUser" ng-click="authObj.$unauth()" menu-close><a style="text-decoration: none; font-size: 1.2em;"ui-sref="#/">Log out</a></ion-item>
+                <ion-item class="sideMenuStyle" ng-show="currentUser" ng-click="authObj.$unauth()" menu-close><a style="text-decoration: none; font-size: 1.2em;"ui-sref="">Log out</a></ion-item>
             </ion-list>   
         </ion-side-menu>
     <ion-side-menu-content class="sideMenuStyle">

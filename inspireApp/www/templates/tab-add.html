@@ -7,17 +7,35 @@
 
 			<img src="img/addBanner.svg" class="bannerStyle" alt="Add Task Banner" style="width: 100%; height: auto;">
 			<div class="taskStyle">
+
+			<p class="errorValidation" 
+			ng-show="authError"> 
+			{{authError}}</p>
 			
 			<!-- Adding Tasks --> 
 				<label class="item item-input">
 					<i class="icon ion-plus-round placeholder-icon"></i>
 					<input class="addTaskInput" type="text" ng-model="task.title" placeholder="Add a Task" ng-required="true">
-				<br/>
 
+			<!-- Below is an error validation message using ng-show -->
+					<p class="errorValidation" 
+					ng-show="myForm.title.$invalid && myForm.title.$touched"> 
+					Must enter title.</p>
 				</label>
-					</br>
-				<p>Expiration:</p>
-				
+				</br>
+				<div class="list">
+			        <div class="item item-input item-select">
+			            <div class="input-label">
+			                Select Category
+			            </div>
+			            <select class="categoryStyle">
+			                <option class="categoryStyle">Health</option>
+			                <option class="categoryStyle">Education</option>
+			                <option class="categoryStyle">Nutrition</option>
+			            </select>
+			        </div>
+			    </div>
+				</br>
 				</div>
 					<!-- Setting the Deadline with the Datepicker -->
 					<ionic-datepicker idate="currentDate" disablepreviousdates="true" callback="datePickerCallback">
@@ -29,12 +47,10 @@
 						<button class="button button-block button-energized brandingSelector"> Set a Time </button>
 					</ionic-timepicker>
 				</br>
-<!-- 				<select class="selectionStyle">
-						<option>Health</option>
-						<option>Leasure</option>
-						<option>Organization</option>
-						<option>Academic</option>							
-				</select> -->
+
+
+
+
 					<p class="addTask">Complete it by {{currentDate | date:'EEEE, MMMM d, y'}} at {{task.time}}</p>
 				<button class="button button-block  button-balanced brandingComplete" type="submit" ng-click="addTask(task, currentDate )">Start Task</button>  
 

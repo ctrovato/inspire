@@ -443,9 +443,6 @@ var url = 'https://appinspire.firebaseio.com/'
 			}
 
 
-
-
-
 	$scope.completeTask = function(task) { 
 
 		$scope.task.$remove().then(function(ref) {
@@ -461,8 +458,6 @@ var url = 'https://appinspire.firebaseio.com/'
 		console.log("Completed"); 
 		
 	}; //completeTask
-
-
 
 	$scope.deleteTask = function(task) { 
 
@@ -483,23 +478,22 @@ var url = 'https://appinspire.firebaseio.com/'
 
 // ============ Dashboard Controller ===========
 // =============================================
-.controller('DashboardCtrl', function($scope, $interval, $stateParams, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
+.controller('DashboardCtrl', function($scope, $interval, $stateParams, $location, $firebaseAuth, $firebaseArray, $firebaseObject, $ionicListDelegate) {
 
 	var url = 'https://appinspire.firebaseio.com/';
 	var ref = new Firebase(url);  
 
     	$scope.authObj = $firebaseAuth(ref);
- 	
+ 			console.log("anything");
 		$scope.authObj.$onAuth(function(authData) {
 			if (authData) {
+				console.log("something");
 				var userRef = new Firebase( url + "users/" + authData.uid);
 				var taskRef = new Firebase( url + "users/" + authData.uid + "/tasks/" );
 				$scope.user = $firebaseObject(userRef);
 				$scope.task = $firebaseArray(taskRef);
 					$scope.task.$loaded().then(function(data){
 						$scope.task = data;
-
-						console.log($scope.task[0]);
 
 						function updateTime(){
 
@@ -525,6 +519,7 @@ var url = 'https://appinspire.firebaseio.com/'
 				// console.log("logged in:", $scope.user); //logging $rootScope.currentUsers
 
 			} else {
+				console.log("workin");
 				$location.path("/splashPage");
 			}
 		});

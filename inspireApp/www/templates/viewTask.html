@@ -23,6 +23,8 @@
 			</br></br>
 			</div><!-- hideDisplay -->
 			</br></br>
+			<button ng-hide= "task.status == 'Expired'" class="button button-block button-calm brandingEdit" ui-sref="#/editTask/{task.$id}">Edit Task </button> 
+			</br>
 			<button ng-hide= "task.status == 'Expired'" class="button button-block button-balanced brandingComplete" ng-click="completeTask(task)">Complete Task</button> 
 
 		</div>

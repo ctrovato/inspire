@@ -99,7 +99,7 @@ angular.module('ionic-timepicker', ['ionic', 'ionic-timepicker.templates'])
 
             $ionicPopup.show({
               templateUrl: 'time-picker-12-hour.html',
-              title: '<strong>12-Hour Format</strong>',
+              title: '<strong>Select Time</strong>',
               subTitle: '',
               scope: scope,
               buttons: [

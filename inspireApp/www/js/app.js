@@ -60,6 +60,7 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
   })
 
   .state('profile', {
+    cache: false,
     url: '/profile',
     templateUrl: 'templates/profile.html',
     controller: 'AddCtrl'
@@ -67,6 +68,7 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
  
 
   .state('dashboard', {
+    cache: false,
     url: '/dashboard',
     templateUrl: 'templates/dashboard.html',
     controller: 'DashboardCtrl'
@@ -77,6 +79,13 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'ionic-da
     url: '/users/:user/tasks/:task',
     templateUrl: 'templates/viewTask.html',
     controller: 'ViewTaskCtrl'
+  })
+
+
+  .state('editTask', {
+    url: '/editTask/:taskId',
+    templateUrl: 'templates/edit.html',
+    controller: 'EditCtrl'
   })
 
 

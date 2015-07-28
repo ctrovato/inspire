@@ -325,13 +325,12 @@ var url = 'https://appinspire.firebaseio.com/'
 				title: task.title,
 				dateFirebase: Firebase.ServerValue.TIMESTAMP,
 				expiration: timeStamp,
-				status: "active",
+				status: "active"
 			}).then(function(){
 				// $scope.task = {};
 				$location.path("/tab/list");
 				task.title = '';
 			})
-
 
 						// the currentUser will recieve points for creating and posting a message
 
@@ -443,6 +442,17 @@ var url = 'https://appinspire.firebaseio.com/'
 			}
 
 
+	// $scope.editTask = function(task) {
+	// 	var task = $firebaseObject(ref);
+	// 	task.$id = ;
+	// 	task.$save().then(function(ref) {
+	// 	  ref.key() === obj.$id; // true
+	// 	}, function(error) {
+	// 	  console.log("Error:", error);
+	// 	});
+	// }		
+
+
 	$scope.completeTask = function(task) { 
 
 		$scope.task.$remove().then(function(ref) {
@@ -463,6 +473,7 @@ var url = 'https://appinspire.firebaseio.com/'
 
 		$scope.task.$remove().then(function(ref) {
 			$location.path("/tab/list");
+
 
 		}, function(error) {
 		  console.log("Error:", error);
@@ -524,9 +535,57 @@ var url = 'https://appinspire.firebaseio.com/'
 			}
 		});
 })
+
+
+// ============ Edit Controller ===========
+// =============================================
+.controller('EditCtrl', function($scope, $firebaseAuth, $stateParams, $firebaseObject) {
+
+		var url = 'https://appinspire.firebaseio.com/';
+		var ref = new Firebase(url); 
+
+		$scope.authObj = $firebaseAuth(ref);
+
+		$scope.authObj.$onAuth(function(authData) {
+
+			if (authData) {
+				
+				var taskRef = new Firebase( url + "users/" + authData.uid + "/tasks/" + $stateParams.task);
+
+				$scope.task = firebaseObject(taskRef);
+				console.log($scope.task);
+
+			} else {
+
+			}
+		});
+		})
+
+
 // ============ Badges Controller ===========
 // =============================================
 .controller('BadgesCtrl', function($scope) {
+
+	// var url = 'https://appinspire.firebaseio.com/'
+	// var ref = new Firebase(url); 
+
+	// $scope.authObj = $firebaseAuth(ref);
+
+	// $scope.authObj.$onAuth(function(authData) {
+	// 	if (authData) {
+	// 		var userRef =  new Firebase(url + "users/" + authData.uid);
+
+	// 		$scope.currentUser = $firebaseObject(userRef);
+
+	// 		$scope.currentUser.$loaded().then(function(){
+			
+	// 		});
+
+	// 	} else {
+	// 		console.log("Logged out");   //logging logged out
+	// 		$location.path('/splashPage')
+	// 	}
+	// }); 	
 
 
 })

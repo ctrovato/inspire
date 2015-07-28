@@ -25,6 +25,11 @@
 	border-style: none;
 }
 
+.brandingEdit{
+	background-color: #7791E5 !important; 
+	border-style: none;
+}
+
 .errorValidation{
 	font-size: 1.2em;
 	color: #DBAF00;
@@ -233,7 +238,7 @@ p {
 	width: 355px;
 	font-family: 'Century Gothic', sans-serif;
 	padding: 12px;
-	color: #fff;
+	color: #565656;
 	font-size: 1.5em;
 }
 
@@ -269,6 +274,11 @@ p {
 }
  .navPadding{
  	padding-top: 15px;
+ }
+
+.tab-item .icon{
+ 	padding-top: 5px;
+ 	padding-bottom: 10px;
  }
 
 .hideText{

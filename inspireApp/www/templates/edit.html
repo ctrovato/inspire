@@ -1,17 +1,17 @@
-<ion-view view-title="Add Task">
+<ion-view view-title="Edit Task">
 	<ion-content class="bkground2 padding">
 
 		<div class="myForm" > 
 			<form name ="myForm"
 			novalidate> 
 
-			<img src="img/addBanner.svg" class="bannerStyle" alt="Add Task Banner" style="width: 100%; height: auto;">
+			<img src="img/addBanner.svg" class="bannerStyle" alt="Edit Task Banner" style="width: 100%; height: auto;">
 			<div class="taskStyle">
 			
 			<!-- Adding Tasks --> 
 				<label class="item item-input">
 					<i class="icon ion-plus-round placeholder-icon"></i>
-					<input class="addTaskInput" type="text" ng-model="task.title" name="title" placeholder="Add a Task" ng-required="true">
+					<input class="addTaskInput" type="text" ng-model="task.title" name="title" placeholder="{{task.title}}}" ng-required="true">
 				</label>
 				<!-- Below is an error validation message using ng-show -->
 					<p class="errorValidation ion-android-warning" 

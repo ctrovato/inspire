@@ -1,7 +1,7 @@
 <ion-view view-title="Dashboard">
   <ion-content class="bkground2 padding" >
 
-	<img  ng-class="facebookUser ?  'profileImg' : 'hideImage'"  src="{{facebookUser.facebook.cachedUserProfile.picture.data.url }}"  alt="profilePic">
+	<img  ng-class="facebookUser ?  'profileImg' : 'hideImage'"  ng-src="{{facebookUser.facebook.cachedUserProfile.picture.data.url }}"  alt="profilePic">
 	<h3 class="currentUser">Hello, {{currentUser.name || facebookUser.facebook.displayName}}!</h3>
 <!-- <div id="dashboardStyling"> -->
 	<div class="button-bar">
@@ -10,7 +10,7 @@
 	</div>
 		</br>
 			<div>
-				<h3 class="currentTask">{{task[0].title}}</h3>
+				<h3 class="currentTask" ng-href="#/users/{{currentUser.$id}}/tasks/{{task.$id}}">{{task[0].title}}</h3>
 				<h2 class="clockDisplay">{{differenceDays}}:{{differenceHours}}:{{differenceMinutes}}</h2>
 				<ul class="timeLables">
 					<li>Days</li>
